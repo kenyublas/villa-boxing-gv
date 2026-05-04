@@ -1,0 +1,2648 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Villa Boxing GV — Escuela de boxeo profesional en Jr. Dos de Mayo N° 1931. Clases para niños, adultos y competidores. Primera clase gratis.">
+  <meta property="og:title" content="Villa Boxing GV — Escuela de Boxeo Profesional">
+  <meta property="og:description"
+    content="Entrenamiento serio para quien quiere resultados reales. Primera clase gratis.">
+  <title>Villa Boxing GV — Escuela de Boxeo Profesional</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #0a0a0a;
+      --red: #D01A1A;
+      --red-dark: #9B1313;
+      --white: #F5F0EB;
+      --gray: #1a1a1a;
+      --gray2: #2a2a2a;
+      --text-muted: #888;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(10, 10, 10, 0.92);
+      border-bottom: 1px solid rgba(208, 26, 26, 0.3);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--red);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .nav-cta {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 0.6rem 1.4rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--red-dark);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('equipo_villa.jpg');
+      background-size: cover;
+      background-position: center 20%;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      filter: brightness(0.3);
+      z-index: -1;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--red);
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4.5rem, 12vw, 10rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      max-width: 800px;
+    }
+
+    .hero-title .accent {
+      color: var(--red);
+    }
+
+    .hero-title .outline {
+      -webkit-text-stroke: 2px var(--white);
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-top: 1.5rem;
+      max-width: 480px;
+      line-height: 1.5;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+    }
+
+    .btn-primary {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--red);
+      color: var(--white);
+      border: 2px solid var(--red);
+      padding: 1rem 2.4rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--red);
+    }
+
+    .btn-outline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(245, 240, 235, 0.3);
+      padding: 1rem 2.4rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--white);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: var(--red);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 1px;
+      background: var(--red);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: 0.03em;
+      color: var(--white);
+    }
+
+    .max-w {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ABOUT */
+    .about {
+      background: var(--gray);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: flex-start;
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #aaa;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p strong {
+      color: var(--white);
+    }
+
+    .about-box {
+      background: var(--gray2);
+      border: 1px solid rgba(208, 26, 26, 0.2);
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* SERVICES */
+    .services {
+      background: var(--black);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1px;
+      margin-top: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .service-card {
+      background: var(--gray);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .service-card:hover {
+      background: var(--gray2);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--red);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: rgba(208, 26, 26, 0.15);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .service-tag {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      border: 1px solid rgba(208, 26, 26, 0.3);
+      padding: 0.3rem 0.8rem;
+    }
+
+    /* ===================== */
+    /* CAMPEONES — NUEVO     */
+    /* ===================== */
+    .champions {
+      background: var(--black);
+      overflow: hidden;
+    }
+
+    .champions-intro {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-top: 1rem;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+    }
+
+    .champions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2px;
+      margin-top: 3rem;
+    }
+
+    .champion-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: var(--gray2);
+      cursor: pointer;
+    }
+
+    .champion-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+      filter: grayscale(20%);
+    }
+
+    .champion-card:hover img {
+      transform: scale(1.06);
+      filter: grayscale(0%);
+    }
+
+    .champion-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.3) 50%, transparent 100%);
+      transition: opacity 0.3s;
+    }
+
+    .champion-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem;
+      transform: translateY(8px);
+      transition: transform 0.3s;
+    }
+
+    .champion-card:hover .champion-info {
+      transform: translateY(0);
+    }
+
+    .champion-badge {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: var(--red);
+      color: var(--white);
+      padding: 0.2rem 0.7rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .champion-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .champion-desc {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(245, 240, 235, 0.65);
+      margin-top: 0.3rem;
+      letter-spacing: 0.03em;
+    }
+
+    /* Placeholder cuando no hay imagen */
+    .champion-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gray2);
+      font-size: 4rem;
+    }
+
+    /* Card grande destacada */
+    .champion-card.featured {
+      grid-row: span 2;
+      aspect-ratio: auto;
+      min-height: 400px;
+    }
+
+    .champions-cta {
+      margin-top: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .champions-cta p {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ===================== */
+    /* TIENDA — NUEVO        */
+    /* ===================== */
+    .shop {
+      background: var(--gray);
+      overflow: hidden;
+    }
+
+    .shop-intro {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-top: 1rem;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+    }
+
+    .shop-carousel-wrap {
+      position: relative;
+      margin-top: 3rem;
+    }
+
+    .shop-track-outer {
+      overflow: hidden;
+    }
+
+    .shop-track {
+      display: flex;
+      gap: 16px;
+      transition: transform 0.45s cubic-bezier(.4, 0, .2, 1);
+      will-change: transform;
+    }
+
+    .shop-card {
+      flex: 0 0 220px;
+      background: var(--gray);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+      cursor: pointer;
+    }
+
+    .shop-card:hover {
+      border-color: rgba(208, 26, 26, 0.5);
+    }
+
+    .shop-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--red);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+
+    .shop-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .shop-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+      background: var(--gray2);
+    }
+
+    .shop-card:hover .shop-img {
+      transform: scale(1.04);
+    }
+
+    .shop-img-placeholder {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gray2);
+      font-size: 3.5rem;
+      transition: transform 0.4s ease;
+    }
+
+    .shop-card:hover .shop-img-placeholder {
+      transform: scale(1.04);
+    }
+
+    .shop-body {
+      padding: 1.2rem 1rem 1.4rem;
+    }
+
+    .shop-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .shop-price {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      color: var(--red);
+      margin-top: 0.3rem;
+      letter-spacing: 0.05em;
+    }
+
+    .shop-wa-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      background: #25D366;
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.55rem 1rem;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .shop-wa-btn:hover {
+      background: #1DAE55;
+    }
+
+    .shop-wa-icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* Nav carrusel */
+    .shop-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .shop-btn {
+      width: 44px;
+      height: 44px;
+      background: var(--gray);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .shop-btn:hover {
+      background: var(--red);
+      border-color: var(--red);
+    }
+
+    .shop-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .shop-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: background 0.2s, width 0.2s;
+      border-radius: 3px;
+    }
+
+    .shop-dot.active {
+      background: var(--red);
+      width: 20px;
+    }
+
+    .shop-auto-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .shop-toggle {
+      width: 28px;
+      height: 16px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    .shop-toggle.on {
+      background: var(--red);
+    }
+
+    .shop-toggle-thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 12px;
+      height: 12px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+
+    .shop-toggle.on .shop-toggle-thumb {
+      transform: translateX(12px);
+    }
+
+    /* SCHEDULE */
+    .schedule {
+      background: var(--gray);
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .schedule-card {
+      background: var(--black);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      transition: border-color 0.2s;
+      border-left: 3px solid var(--red);
+    }
+
+    .schedule-card:hover {
+      border-color: rgba(208, 26, 26, 0.4);
+    }
+
+    .sched-day {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.1em;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+
+    .sched-time {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      text-align: left;
+    }
+
+    .sched-time strong {
+      color: var(--white);
+      font-size: 0.9rem;
+    }
+
+    /* WHY */
+    .why {
+      background: var(--black);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .why-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(208, 26, 26, 0.1);
+      border: 1px solid rgba(208, 26, 26, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .why-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .why-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* PRECIOS */
+    .precios {
+      background: var(--gray);
+    }
+
+    .precios-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .precio-card {
+      background: var(--black);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 2.5rem 2rem;
+      flex: 1;
+      min-width: 280px;
+      max-width: 400px;
+      position: relative;
+    }
+
+    .precio-card.featured {
+      border-color: var(--red);
+    }
+
+    .precio-badge {
+      background: var(--red);
+      color: white;
+      padding: 0.3rem 1rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    .precio-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+
+    .precio-amount {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: var(--red);
+      line-height: 1;
+      margin: 0.5rem 0 0.25rem;
+    }
+
+    .precio-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .precio-divider {
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin: 1.5rem 0;
+    }
+
+    .precio-feature {
+      font-size: 0.9rem;
+      color: #aaa;
+      line-height: 1.8;
+    }
+
+    .precio-feature strong {
+      color: #ffd700;
+    }
+
+    /* CTA BAND */
+    .cta-band {
+      background: var(--red);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .cta-band h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      letter-spacing: 0.05em;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .cta-band p {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      color: rgba(245, 240, 235, 0.75);
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+    }
+
+    .btn-white {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--white);
+      color: var(--red);
+      border: 2px solid var(--white);
+      padding: 1rem 2.4rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .btn-white:hover {
+      background: transparent;
+      color: var(--white);
+    }
+
+    /* CONTACT */
+    .contact {
+      background: var(--gray);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      background: rgba(208, 26, 26, 0.1);
+      border: 1px solid rgba(208, 26, 26, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .contact-detail-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .contact-detail-val {
+      font-size: 0.95rem;
+      color: var(--white);
+      margin-top: 0.15rem;
+    }
+
+    .contact-detail-val a {
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .contact-detail-val a:hover {
+      color: var(--red);
+    }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #25D366;
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.8rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .whatsapp-btn:hover {
+      background: #1DAE55;
+    }
+
+    .whatsapp-icon {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    .ig-handle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .ig-gradient {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      -webkit-background-clip: text;
+      background-clip: text;
+      /* Añade esta línea para quitar la advertencia */
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      padding: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      color: var(--white);
+    }
+
+    .footer-logo span {
+      color: var(--red);
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    .footer-credit {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.2);
+      margin-top: 0.25rem;
+    }
+
+    .footer-admin {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.15);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .footer-admin:hover {
+      color: rgba(208, 26, 26, 0.5);
+    }
+
+    /* LOGIN MODAL */
+    .login-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+      backdrop-filter: blur(4px);
+    }
+
+    .login-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .login-box {
+      background: var(--gray);
+      border: 1px solid rgba(208, 26, 26, 0.25);
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 360px;
+      position: relative;
+      animation: fadeUp 0.3s ease;
+    }
+
+    .login-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.3rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .login-close:hover {
+      color: var(--white);
+    }
+
+    .login-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+
+    .login-logo span {
+      color: var(--red);
+    }
+
+    .login-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .login-field {
+      margin-bottom: 1.1rem;
+    }
+
+    .login-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 0.45rem;
+    }
+
+    .login-input {
+      width: 100%;
+      background: var(--black);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.95rem;
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .login-input:focus {
+      border-color: rgba(208, 26, 26, 0.5);
+    }
+
+    .login-input::placeholder {
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    .login-btn {
+      width: 100%;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.85rem;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background 0.2s;
+    }
+
+    .login-btn:hover {
+      background: var(--red-dark);
+    }
+
+    .login-error {
+      font-size: 0.82rem;
+      color: #ff6b6b;
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.05em;
+      margin-top: 0.75rem;
+      display: none;
+      text-align: center;
+    }
+
+    .login-error.show {
+      display: block;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-eyebrow {
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .hero-title {
+      animation: fadeUp 0.6s 0.1s ease forwards;
+      opacity: 0;
+    }
+
+    .hero-sub {
+      animation: fadeUp 0.6s 0.25s ease forwards;
+      opacity: 0;
+    }
+
+    .hero-actions {
+      animation: fadeUp 0.6s 0.35s ease forwards;
+      opacity: 0;
+    }
+
+    .hero-stats {
+      animation: fadeUp 0.6s 0.45s ease forwards;
+      opacity: 0;
+    }
+
+    /* ===================== */
+    /* GALERÍA               */
+    /* ===================== */
+    .galeria {
+      background: var(--black);
+      overflow: hidden;
+    }
+
+    .galeria-intro {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-top: 1rem;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+    }
+
+    /* Filtros */
+    .galeria-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .gal-filter {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .gal-filter:hover {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .gal-filter.active {
+      background: var(--red);
+      color: var(--white);
+      border-color: var(--red);
+    }
+
+    /* Grid masonry-like */
+    .galeria-grid {
+      columns: 4;
+      column-gap: 6px;
+      margin-bottom: 2.5rem;
+    }
+
+    .gal-item {
+      break-inside: avoid;
+      margin-bottom: 6px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--gray2);
+      display: block;
+    }
+
+    .gal-item img {
+      width: 100%;
+      display: block;
+      transition: transform 0.45s ease, filter 0.3s;
+      filter: grayscale(15%);
+    }
+
+    .gal-item:hover img {
+      transform: scale(1.05);
+      filter: grayscale(0%);
+    }
+
+    .gal-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 10, 10, 0.8) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 0.8rem;
+    }
+
+    .gal-item:hover .gal-item-overlay {
+      opacity: 1;
+    }
+
+    .gal-item-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--red);
+      color: var(--white);
+      padding: 0.2rem 0.6rem;
+    }
+
+    /* Placeholder cuando no hay imagen */
+    .gal-placeholder {
+      background: var(--gray2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: rgba(255, 255, 255, 0.1);
+      min-height: 160px;
+      width: 100%;
+    }
+
+    /* Bottom actions */
+    .galeria-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .gal-count {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    .gal-count span {
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+      backdrop-filter: blur(8px);
+    }
+
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-img {
+      max-width: 88vw;
+      max-height: 86vh;
+      object-fit: contain;
+      display: block;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.5rem;
+      background: rgba(208, 26, 26, 0.8);
+      border: none;
+      color: white;
+      font-size: 1.3rem;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 1001;
+    }
+
+    .lightbox-close:hover {
+      background: var(--red-dark);
+    }
+
+    .lightbox-nav {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(10, 10, 10, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1.8rem;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+      z-index: 1001;
+    }
+
+    .lightbox-nav:hover {
+      background: var(--red);
+      border-color: var(--red);
+    }
+
+    .lightbox-prev {
+      left: 1rem;
+    }
+
+    .lightbox-next {
+      right: 1rem;
+    }
+
+    .lightbox-info {
+      position: fixed;
+      bottom: 1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(10, 10, 10, 0.85);
+      padding: 0.5rem 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .lightbox-counter {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    .lightbox-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: var(--red);
+      color: white;
+      padding: 0.15rem 0.6rem;
+    }
+
+    .lightbox-delete {
+      background: rgba(208, 26, 26, 0.2);
+      border: 1px solid rgba(208, 26, 26, 0.3);
+      color: var(--red);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: none;
+    }
+
+    .lightbox-delete:hover {
+      background: var(--red);
+      color: white;
+    }
+
+    .lightbox-delete.visible {
+      display: block;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav {
+        padding: 0.9rem 1.2rem;
+      }
+
+      .nav-toggle {
+        display: block;
+        order: 3;
+      }
+
+      .nav-logo {
+        order: 1;
+      }
+
+      .nav-cta {
+        order: 2;
+        margin-left: auto;
+        margin-right: 1rem;
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        padding: 2rem;
+        text-align: center;
+        border-bottom: 2px solid var(--red);
+        gap: 1.5rem;
+        z-index: 10;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hero {
+        padding: 7rem 1.2rem 3rem;
+      }
+
+      /* Quitamos la imagen de fondo en celular para que se vea negro sólido */
+      .hero::before {
+        display: none;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .hero-stats {
+        gap: 1.5rem;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-copy {
+        text-align: left;
+      }
+
+      .champion-card.featured {
+        grid-row: span 1;
+      }
+
+      .shop-card {
+        flex: 0 0 180px;
+      }
+
+      .galeria-grid {
+        columns: 2;
+      }
+
+      .lightbox-nav {
+        width: 38px;
+        height: 38px;
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVEGACIÓN -->
+  <nav>
+    <a href="#inicio" class="nav-logo">Villa<span>Boxing</span></a>
+    <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+    <ul class="nav-links">
+      <li><a href="#about">Nosotros</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#campeones">Campeones</a></li>
+      <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#tienda">Tienda</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="https://wa.me/51982097968?text=Hola!%20Quiero%20m%C3%A1s%20info%20sobre%20Villa%20Boxing%20GV%20"
+      target="_blank" class="nav-cta">Únete Ahora</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="max-w">
+      <p class="hero-eyebrow">Escuela de Boxeo Profesional</p>
+      <h1 class="hero-title">
+        FORJA TU<br>
+        <span class="accent">CARÁCTER</span><br>
+        <span class="outline">EN EL RING</span>
+      </h1>
+      <p class="hero-sub">Entrenamiento serio para quien quiere resultados reales. No importa tu nivel — aquí empiezas
+        desde cero o llegas al siguiente.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/51982097968?text=Hola!%20Quiero%20reservar%20mi%20clase%20gratis%20en%20Villa%20Boxing%20GV%20"
+          target="_blank" class="btn-primary">Primera clase gratis</a>
+        <a href="#servicios" class="btn-outline">Ver programas</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Años formando campeones</div>
+        </div>
+        <div>
+          <div class="stat-num">200+</div>
+          <div class="stat-label">Alumnos entrenados</div>
+        </div>
+        <div>
+          <div class="stat-num">3</div>
+          <div class="stat-label">Categorías disponibles</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section class="about" id="about">
+    <div class="max-w">
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="section-label">Quiénes Somos</p>
+          <h2 class="section-title" style="margin-bottom: 2rem;">EL GIMNASIO<br>QUE TE EXIGE</h2>
+          <p><strong>Villa Boxing GV</strong> es una escuela de boxeo con propósito. No vendemos excusas ni rutinas
+            fáciles. Aquí se trabaja con disciplina, técnica y constancia.</p>
+          <p>Desde niños hasta adultos, desde principiantes hasta peleadores de competencia — cada alumno recibe
+            atención personalizada para alcanzar su mejor versión.</p>
+          <p>Nuestro equipo de entrenadores tiene años de experiencia en el deporte. Sabemos lo que se necesita para
+            <strong>subir al ring con confianza.</strong>
+          </p>
+          <a href="#contacto" class="btn-primary" style="margin-top:1.5rem; display:inline-block;">Conoce el gym</a>
+        </div>
+        <div>
+          <div class="about-box"
+            style="padding:0; overflow:hidden; position:relative; border-radius:8px; aspect-ratio: 3/4; border: 5px solid var(--red);">
+            <img src="entrenador.png" alt="Entrenador Villa Boxing"
+              style="width:100%; height:100%; object-fit:cover; display:block;">
+            <div class="champion-overlay"></div>
+            <div class="champion-info" style="text-align: left;">
+              <span class="champion-badge">Entrenador Principal</span>
+              <div class="champion-name">Gonzalo Villanueva</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="services" id="servicios">
+    <div class="max-w">
+      <p class="section-label">Nuestros Programas</p>
+      <h2 class="section-title">ELIGE TU<br>CAMINO</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <div class="service-name">Boxeo Infantil</div>
+          <p class="service-desc">Para niños y jóvenes. Aprendemos técnica, coordinación y valores como el respeto y la
+            disciplina desde temprana edad.</p>
+          <span class="service-tag">6 — 14 años</span>
+        </div>
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <div class="service-name">Fitness & Boxeo</div>
+          <p class="service-desc">Quema calorías, gana fuerza y desestresate. Entrenamiento de boxeo enfocado en
+            condición física sin necesidad de pelear.</p>
+          <span class="service-tag">Todas las edades</span>
+        </div>
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <div class="service-name">Boxeo Competitivo</div>
+          <p class="service-desc">Para quienes quieren subir al ring de verdad. Preparación táctica, sparring controlado
+            y plan de competencia personalizado.</p>
+          <span class="service-tag">Seleccionados</span>
+        </div>
+        <div class="service-card">
+          <div class="service-num">04</div>
+          <div class="service-name">Entrenamiento Personal</div>
+          <p class="service-desc">Sesiones 1 a 1 con un entrenador dedicado. El camino más rápido para mejorar tu
+            técnica y alcanzar objetivos específicos.</p>
+          <span class="service-tag">Por cita</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== -->
+  <!-- CAMPEONES — NUEVO    -->
+  <!-- ==================== -->
+  <section class="champions" id="campeones">
+    <div class="max-w">
+      <p class="section-label">Nuestros Alumnos</p>
+      <h2 class="section-title">ELLOS<br><span style="color:var(--red);">LO LOGRARON</span></h2>
+      <p class="champions-intro">Cada uno llegó con un sueño distinto. Aquí están sus historias — desde el primer
+        guantazo hasta el podio.</p>
+
+      <div class="champions-grid">
+
+        <!-- CARD GRANDE DESTACADA -->
+        <div class="champion-card featured">
+          <img src="campeon_1.png" alt="Nombre Apellido">
+          <!-- Reemplaza con: <img src="campeon_1.jpg" alt="Nombre Apellido"> -->
+          <div class="champion-placeholder">🥊</div>
+          <div class="champion-overlay"></div>
+          <div class="champion-info">
+            <span class="champion-badge">Campeón Regional</span>
+            <div class="champion-name">Joseph Brayan </div>
+            <div class="champion-desc">Categoría · Año del logro</div>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="champion-card">
+          <img src="campeon_2.png" alt="Nombre Apellido">
+          <div class="champion-overlay"></div>
+          <div class="champion-info">
+            <span class="champion-badge">Competidor</span>
+            <div class="champion-name">Carmen Santiago </div>
+
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="champion-card">
+          <img src="campeon_3.png" alt="Nombre Apellido">
+          <div class="champion-overlay"></div>
+          <div class="champion-info">
+            <span class="champion-badge">Competidor</span>
+            <div class="champion-name">Abraham Moisés </div>
+
+          </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="champion-card">
+          <img src="campeon_4.png" alt="Nombre Apellido">
+          <div class="champion-overlay"></div>
+          <div class="champion-info">
+            <span class="champion-badge">Competidor</span>
+            <div class="champion-name"> Adriano Lozano</div>
+
+          </div>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="champion-card">
+          <img src="campeon_5.png" alt="Nombre Apellido">
+          <div class="champion-overlay"></div>
+          <div class="champion-info">
+            <span class="champion-badge">Competidor</span>
+            <div class="champion-name"> Jakziel Huaqui </div>
+
+          </div>
+        </div>
+        <div class="champion-card">
+          <img src="campeon_6.png" alt="Nombre Apellido">
+          <div class="champion-overlay"></div>
+          <div class="champion-info">
+            <span class="champion-badge">Competidor</span>
+            <div class="champion-name">Jean carlos Lucas </div>
+
+          </div>
+        </div>
+
+        <div class="champion-card">
+          <img src="campeon_7.png" alt="Nombre Apellido">
+          <div class="champion-overlay"></div>
+          <div class="champion-info">
+            <span class="champion-badge">Competidor</span>
+            <div class="champion-name">Luana Falcon</div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="champions-cta">
+        <a href="https://wa.me/51982097968?text=Hola!%20Quiero%20reservar%20mi%20clase%20gratis%20en%20Villa%20Boxing%20GV%20%"
+          target="_blank" class="btn-primary">Empieza tu historia</a>
+        <p>¿Quieres ser el próximo? Tu primera clase es gratis.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HORARIOS -->
+  <section class="schedule" id="horarios">
+    <div class="max-w">
+      <p class="section-label">Horarios</p>
+      <h2 class="section-title">ENCUENTRA<br>TU TURNO</h2>
+      <div class="schedule-grid">
+        <div class="schedule-card">
+          <div class="sched-day">Lunes</div>
+          <div class="sched-time">
+            <strong>9:30 AM</strong> Box / MMA<br>
+            <strong>5:30 PM</strong> Boxeo Niños<br>
+            <strong>7:00 PM</strong> Box<br>
+            <strong>8:30 PM</strong> Box
+          </div>
+        </div>
+        <div class="schedule-card">
+          <div class="sched-day">Martes</div>
+          <div class="sched-time">
+            <strong>9:30 AM</strong> Box / MMA<br>
+            <strong>5:30 PM</strong> Kick Boxing Niños<br>
+            <strong>7:00 PM</strong> Box<br>
+            <strong>8:30 PM</strong> MMA
+          </div>
+        </div>
+        <div class="schedule-card">
+          <div class="sched-day">Miércoles</div>
+          <div class="sched-time">
+            <strong>9:30 AM</strong> Box / MMA<br>
+            <strong>5:30 PM</strong> Boxeo Niños<br>
+            <strong>7:00 PM</strong> Box<br>
+            <strong>8:30 PM</strong> Box
+          </div>
+        </div>
+        <div class="schedule-card">
+          <div class="sched-day">Jueves</div>
+          <div class="sched-time">
+            <strong>9:30 AM</strong> Box / MMA<br>
+            <strong>5:30 PM</strong> Kick Boxing Niños<br>
+            <strong>7:00 PM</strong> Box<br>
+            <strong>8:30 PM</strong> MMA
+          </div>
+        </div>
+        <div class="schedule-card">
+          <div class="sched-day">Viernes</div>
+          <div class="sched-time">
+            <strong>9:30 AM</strong> Box / MMA<br>
+            <strong>5:30 PM</strong> MMA<br>
+            <strong>7:00 PM</strong> Libre<br>
+            <strong>8:30 PM</strong> Libre
+          </div>
+        </div>
+      </div>
+      <p
+        style="margin-top:1.5rem; font-size:0.85rem; color:var(--text-muted); font-family:'Barlow Condensed',sans-serif; letter-spacing:0.05em;">
+        * Horarios referenciales. Confirma disponibilidad por WhatsApp.</p>
+    </div>
+  </section>
+
+  <!-- PRECIOS -->
+  <section class="precios" id="precios">
+    <div class="max-w">
+      <p class="section-label">Inversión</p>
+      <h2 class="section-title">PLANES Y<br>MATRÍCULA</h2>
+      <div class="precios-grid">
+        <div class="precio-card featured">
+          <span class="precio-badge">Oferta de Bienvenida</span>
+          <div class="precio-title">Matrícula</div>
+          <div class="precio-amount">S/ 50</div>
+          <div class="precio-sub">Pago único</div>
+          <div class="precio-divider"></div>
+          <p class="precio-feature">🎁 <strong>¡GRATIS!</strong> Polera o Polo oficial de la academia al matricularte
+          </p>
+        </div>
+        <div class="precio-card">
+          <div class="precio-title">Mensualidad</div>
+          <div style="margin: 1rem 0;">
+            <div class="precio-amount" style="font-size:2.8rem;">S/ 100</div>
+            <div class="precio-sub">Clases diarias</div>
+            <div class="precio-amount" style="font-size:2.8rem; margin-top:1rem;">S/ 80</div>
+            <div class="precio-sub">Clases interdiarias</div>
+          </div>
+          <div class="precio-divider"></div>
+          <a href="https://wa.me/51982097968?text=Hola!%20Quiero%20mi%20d%C3%ADa%20de%20prueba%20gratis%20%F0%9F%A5%8A"
+            target="_blank" class="btn-primary" style="display:block; text-align:center; margin-top:0.5rem;">Solicitar
+            día de prueba gratis</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUÉ NOSOTROS -->
+  <section class="why">
+    <div class="max-w">
+      <p class="section-label">Por Qué Villa Boxing</p>
+      <h2 class="section-title">MÁS QUE<br>UN GYM</h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-icon">🥊</div>
+          <div class="why-title">Entrenadores con experiencia</div>
+          <p class="why-desc">Coaches formados en competencia con metodología probada para todos los niveles.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">👥</div>
+          <div class="why-title">Ambiente de familia</div>
+          <p class="why-desc">Comunidad unida que se apoya mutuamente. Entras solo y sales con compañeros de vida.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">📈</div>
+          <div class="why-title">Progresión real</div>
+          <p class="why-desc">Seguimiento individual de tu evolución técnica y física desde el primer día.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">🏆</div>
+          <div class="why-title">Resultados comprobados</div>
+          <p class="why-desc">Alumnos que han competido y ganado a nivel regional. El método funciona.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== -->
+  <!-- TIENDA — NUEVO       -->
+  <!-- ==================== -->
+  <section class="shop" id="tienda">
+    <div class="max-w">
+      <p class="section-label">Equipamiento</p>
+      <h2 class="section-title">NUESTRA<br><span style="color:var(--red);">TIENDA</span></h2>
+      <p class="shop-intro">Equípate con lo mejor. Todo disponible directamente con nosotros — escríbenos y coordinamos.
+      </p>
+
+      <div class="shop-carousel-wrap">
+        <div class="shop-track-outer">
+          <div class="shop-track" id="shopTrack">
+
+            <!-- PRODUCTO 1 — reemplaza src="producto_1.jpg" con tu foto -->
+            <div class="shop-card" onclick="shopWA('Polo Villa Boxing')">
+              <img src="negro.png" alt="Polo Villa Boxing" class="shop-img">
+              <!-- <img src="producto_1.jpg" alt="Polo Villa Boxing" class="shop-img"> -->
+              <div class="shop-body">
+                <div class="shop-name">Polo Villa Boxing</div>
+                <div class="shop-price">S/ 45.00</div>
+                <button class="shop-wa-btn">
+                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  Consultar
+                </button>
+              </div>
+            </div>
+
+            <!-- PRODUCTO 2 -->
+            <div class="shop-card" onclick="shopWA('short')">
+              <img src="short.png" alt="short deportivo" class="shop-img">
+              <!-- <img src="producto_2.jpg" alt="Guantes de box" class="shop-img"> -->
+              <div class="shop-body">
+                <div class="shop-name">short deportivo</div>
+                <div class="shop-price">S/ 45.00</div>
+                <button class="shop-wa-btn">
+                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  Consultar
+                </button>
+              </div>
+            </div>
+
+            <!-- PRODUCTO 3 -->
+            <div class="shop-card" onclick="shopWA('Vendas de Boxeo')">
+              <img src="vendas.png" alt="vendas de Boxeo" class="shop-img">
+              <!-- <img src="producto_3.jpg" alt="Vendas para manos" class="shop-img"> -->
+              <div class="shop-body">
+                <div class="shop-name">Vendas De Boxeo</div>
+                <div class="shop-price">S/ 30.00</div>
+                <button class="shop-wa-btn">
+                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  Consultar
+                </button>
+              </div>
+            </div>
+
+            <!-- PRODUCTO 4 -->
+            <div class="shop-card" onclick="shopWA('GUANTES DE BOX VENUM')">
+              <img src="guantes.png" alt="GUANTES DE BOX VENUM" class="shop-img">
+              <!-- <img src="producto_4.jpg" alt="Short deportivo" class="shop-img"> -->
+              <div class="shop-body">
+                <div class="shop-name">GUANTES DE BOX VENUM</div>
+                <div class="shop-price">S/ 190.00</div>
+                <button class="shop-wa-btn">
+                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  Consultar
+                </button>
+              </div>
+            </div>
+
+            <!-- PRODUCTO 5 -->
+            <div class="shop-card" onclick="shopWA('POLO VILLA BOXING')">
+              <img src="polo_rosado.png" alt="POLO VILLA BOXING" class="shop-img">
+              <!-- <img src="producto_5.jpg" alt="Protector bucal" class="shop-img"> -->
+              <div class="shop-body">
+                <div class="shop-name">POLO VILLA BOXING</div>
+                <div class="shop-price">S/ 45</div>
+                <button class="shop-wa-btn">
+                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  Consultar
+                </button>
+              </div>
+            </div>
+
+            <!-- PRODUCTO 6 -->
+            <div class="shop-card" onclick="shopWA('conjunto villaboxing')">
+              <img src="conjunto_villaboxing.png" alt="conjunto villaboxing" class="shop-img">
+              <div class="shop-body">
+                <div class="shop-name">Conjunto Villa Boxing</div>
+                <div class="shop-price">S/ 85.00</div>
+                <button class="shop-wa-btn">
+                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.898-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  Consultar
+                </button>
+              </div>
+            </div>
+
+            <!-- PRODUCTO 7 -->
+            <div class="shop-card" onclick="shopWA('Polera Villa Boxing')">
+              <img src="polera_villaboxing.png" alt="polera villaboxing" class="shop-img">
+              <div class="shop-body">
+                <div class="shop-name">Polera Villa Boxing</div>
+                <div class="shop-price">S/ 55.00</div>
+                <button class="shop-wa-btn">
+                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  Consultar
+                </button>
+              </div>
+            </div>
+            <!-- PRODUCTO 8 -->
+            <div class="shop-card" onclick="shopWA('Bucales')">
+              <img src="bucales.png" alt="bucales" class="shop-img">
+              <div class="shop-body">
+                <div class="shop-name">Bucales</div>
+                <div class="shop-price">S/ 30.00</div>
+                <button class="shop-wa-btn">
+                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  Consultar
+                </button>
+              </div>
+            </div>
+            <!-- PRODUCTO 9 -->
+            <div class="shop-card" onclick="shopWA('Polera rosado')">
+              <img src="polera_rosado.png" alt="polera rosado" class="shop-img">
+              <div class="shop-body">
+                <div class="shop-name">Polera rosado VillaBoxing</div>
+                <div class="shop-price">S/ 55.00</div>
+                <button class="shop-wa-btn">
+                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  Consultar
+                </button>
+              </div>
+            </div>
+            <!-- PRODUCTO 10 -->
+            <div class="shop-card" onclick="shopWA('Polera blanco')">
+              <img src="polera_blanco.png" alt="polera blanco" class="shop-img">
+              <div class="shop-body">
+                <div class="shop-name">Polera blanco VillaBoxing</div>
+                <div class="shop-price">S/ 55.00</div>
+                <button class="shop-wa-btn">
+                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  Consultar
+                </button>
+              </div>
+            </div>
+            <!-- PRODUCTO 11 -->
+            <div class="shop-card" onclick="shopWA('Polera plomo')">
+              <img src="polera_plomo.png" alt="polera plomo" class="shop-img">
+              <div class="shop-body">
+                <div class="shop-name">Polera plomo VillaBoxing</div>
+                <div class="shop-price">S/ 55.00</div>
+                <button class="shop-wa-btn">
+                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  Consultar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controles -->
+        <div class="shop-nav">
+          <button class="shop-btn" id="shopPrev" onclick="shopMove(-1)">&#8249;</button>
+          <button class="shop-btn" id="shopNext" onclick="shopMove(1)">&#8250;</button>
+          <div class="shop-dots" id="shopDots"></div>
+          <label class="shop-auto-label" onclick="shopToggleAuto()">
+            <div class="shop-toggle on" id="shopToggle">
+              <div class="shop-toggle-thumb"></div>
+            </div>
+            Auto
+          </label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== -->
+  <!-- GALERÍA — NUEVO      -->
+  <!-- ==================== -->
+  <section class="galeria" id="galeria">
+    <div class="max-w">
+      <p class="section-label">Nuestra Escuela</p>
+      <h2 class="section-title">GALERÍA<br><span style="color:var(--red);">EN ACCIÓN</span></h2>
+      <p class="galeria-intro">Momentos reales del gimnasio — entrenamientos, competencias y la familia que se forja
+        cada día en el ring.</p>
+
+      <!-- Filtros -->
+      <div class="galeria-filters">
+        <button class="gal-filter active" data-filter="all" onclick="galFiltrar(this,'all')">Todos</button>
+        <button class="gal-filter" data-filter="entrenamiento"
+          onclick="galFiltrar(this,'entrenamiento')">Entrenamiento</button>
+        <button class="gal-filter" data-filter="competencia"
+          onclick="galFiltrar(this,'competencia')">Competencia</button>
+        <button class="gal-filter" data-filter="equipo" onclick="galFiltrar(this,'equipo')">Equipo</button>
+        <button class="gal-filter" data-filter="ninos" onclick="galFiltrar(this,'ninos')">Niños</button>
+      </div>
+
+      <!-- Grid de fotos -->
+      <div class="galeria-grid" id="galeriaGrid">
+        <!-- Las fotos se renderizan aquí dinámicamente via JS -->
+        <!-- Fotos placeholder de ejemplo que el cliente reemplaza con las suyas -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX (Restaurado para evitar errores de consola) -->
+  <div class="lightbox" id="lightbox" onclick="lbBgClose(event)">
+    <button class="lightbox-close" onclick="lbClose()">✕</button>
+    <button class="lightbox-nav lightbox-prev" onclick="lbMove(-1)">‹</button>
+    <button class="lightbox-nav lightbox-next" onclick="lbMove(1)">›</button>
+    <div class="lightbox-inner">
+      <img src="" alt="" class="lightbox-img" id="lbImg">
+    </div>
+    <div class="lightbox-info">
+      <span class="lightbox-counter" id="lbCounter">1 / 1</span>
+      <span class="lightbox-tag" id="lbTag"></span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <div class="max-w">
+      <h2>¿LISTO PARA<br>EMPEZAR?</h2>
+      <p>Tu primera clase es gratis. Solo tienes que dar el primer paso.</p>
+      <a href="https://wa.me/51982097968?text=Hola!%20Me%20interesa%20la%20clase%20gratis%20en%20Villa%20Boxing%20GV%20"
+        target="_blank" class="btn-white">Reserva tu clase gratis</a>
+    </div>
+  </div>
+
+  <!-- CONTACTO -->
+  <section class="contact" id="contacto">
+    <div class="max-w">
+      <p class="section-label">Contacto</p>
+      <h2 class="section-title">HABLEMOS</h2>
+      <div class="contact-grid">
+        <div>
+          <p style="font-size:1rem; color:#aaa; line-height:1.7; margin-bottom:2rem;">¿Tienes dudas sobre los programas,
+            precios o disponibilidad? Escríbenos directamente por WhatsApp.</p>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-detail-label">Dirección</div>
+              <div class="contact-detail-val">Jr. Dos de Mayo N° 1931</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <div>
+              <div class="contact-detail-label">Teléfono / WhatsApp</div>
+              <div class="contact-detail-val"><a href="https://wa.me/51982097968" target="_blank">+51 982 097 968</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"
+              style="background:linear-gradient(45deg,rgba(240,148,51,0.15),rgba(188,24,136,0.15)); border-color:rgba(188,24,136,0.2);">
+              📸</div>
+            <div>
+              <div class="contact-detail-label">Instagram</div>
+              <div class="contact-detail-val">
+                <a href="https://www.instagram.com/villaboxing_gv/" target="_blank" class="ig-handle">
+                  <span class="ig-gradient">@villaboxing_gv</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <a href="https://wa.me/51982097968?text=Hola!%20Me%20interesa%20conocer%20m%C3%A1s%20sobre%20Villa%20Boxing%20GV%20"
+            target="_blank" class="whatsapp-btn">
+            <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            +51 982 097 968 — Escríbenos
+          </a>
+        </div>
+        <div>
+          <div style="background:var(--black); border:1px solid rgba(255,255,255,0.06); padding:2.5rem 2rem;">
+            <div
+              style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; letter-spacing:0.05em; margin-bottom:1.5rem; color:var(--white);">
+              PRIMERA CLASE GRATIS</div>
+            <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.7; margin-bottom:1.5rem;">Ven a conocer
+              el gimnasio sin compromisos. Un entrenador te recibirá, te mostrará las instalaciones y podrás entrenar tu
+              primera sesión sin costo.</p>
+            <div style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:1.5rem;">
+              <div style="display:flex; align-items:center; gap:0.75rem; font-size:0.9rem; color:#aaa;"><span
+                  style="color:var(--red);">✓</span> No necesitas experiencia previa</div>
+              <div style="display:flex; align-items:center; gap:0.75rem; font-size:0.9rem; color:#aaa;"><span
+                  style="color:var(--red);">✓</span> Trae ropa cómoda, lo demás lo ponemos nosotros</div>
+              <div style="display:flex; align-items:center; gap:0.75rem; font-size:0.9rem; color:#aaa;"><span
+                  style="color:var(--red);">✓</span> Todas las edades bienvenidas</div>
+            </div>
+            <a href="https://wa.me/51982097968?text=Hola!%20Quiero%20reservar%20mi%20clase%20gratis%20en%20Villa%20Boxing%20GV%20"
+              target="_blank" class="btn-primary" style="width:100%; text-align:center; display:block;">Reservar clase
+              gratis</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Villa<span>Boxing</span> GV</div>
+    <div class="footer-copy">
+      <div>© 2026 Villa Boxing GV — Jr. Dos de Mayo N° 1931</div>
+    </div>
+    <button class="footer-admin" onclick="document.getElementById('loginOverlay').classList.add('open')">⚙
+      Admin</button>
+  </footer>
+
+  <!-- LOGIN MODAL -->
+  <div class="login-overlay" id="loginOverlay">
+    <div class="login-box">
+      <button class="login-close" onclick="cerrarLogin()">✕</button>
+      <div class="login-logo">Villa<span>Boxing</span></div>
+      <div class="login-sub">Acceso administrador</div>
+      <div class="login-field">
+        <label class="login-label">Usuario</label>
+        <input class="login-input" type="text" id="loginUser" placeholder="usuario" autocomplete="username">
+      </div>
+      <div class="login-field">
+        <label class="login-label">Contraseña</label>
+        <input class="login-input" type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password"
+          onkeydown="if(event.key==='Enter') doLogin()">
+      </div>
+      <button class="login-btn" onclick="doLogin()">Ingresar al sistema</button>
+      <div class="login-error" id="loginError">Usuario o contraseña incorrectos</div>
+    </div>
+  </div>
+
+  <script>
+    // =====================
+    // CARRUSEL TIENDA
+    // =====================
+    const track = document.getElementById('shopTrack');
+    const cards = track.querySelectorAll('.shop-card');
+    const dotsEl = document.getElementById('shopDots');
+    const CARD_W = 236; // 220px + 16px gap
+    let shopCurrent = 0;
+    let shopAuto = true;
+    let shopTimer = null;
+    let shopStartX = 0;
+
+    // Crear dots
+    cards.forEach((_, i) => {
+      const d = document.createElement('div');
+      d.className = 'shop-dot' + (i === 0 ? ' active' : '');
+      dotsEl.appendChild(d);
+    });
+
+    function shopVisible() {
+      return Math.floor((track.parentElement.offsetWidth + 16) / CARD_W);
+    }
+
+    function shopGoTo(idx) {
+      const max = cards.length - shopVisible();
+      shopCurrent = Math.max(0, Math.min(idx, max));
+      track.style.transform = `translateX(-${shopCurrent * CARD_W}px)`;
+      document.querySelectorAll('.shop-dot').forEach((d, i) => d.classList.toggle('active', i === shopCurrent));
+    }
+
+    function shopMove(dir) {
+      const max = cards.length - shopVisible();
+      const next = shopCurrent + dir;
+      shopGoTo(next > max ? 0 : next < 0 ? max : next);
+      if (shopAuto) { clearInterval(shopTimer); shopStartTimer(); }
+    }
+
+    function shopStartTimer() {
+      shopTimer = setInterval(() => shopMove(1), 3000);
+    }
+
+    function shopToggleAuto() {
+      shopAuto = !shopAuto;
+      document.getElementById('shopToggle').classList.toggle('on', shopAuto);
+      if (shopAuto) shopStartTimer(); else clearInterval(shopTimer);
+    }
+
+    function shopWA(producto) {
+      const msg = encodeURIComponent(`Hola! Vi en la página de Villa Boxing que tienen *${producto}* disponible. ¿Me pueden dar más información y el precio?`);
+      window.open(`https://wa.me/51982097968?text=${msg}`, '_blank');
+    }
+
+    // Touch swipe
+    track.addEventListener('touchstart', e => { shopStartX = e.touches[0].clientX; });
+    track.addEventListener('touchend', e => {
+      const diff = shopStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) shopMove(diff > 0 ? 1 : -1);
+    });
+
+    shopStartTimer();
+
+    // =====================
+    // GALERÍA
+    // =====================
+    // Agrega o quita fotos manualmente aquí. 
+    // Categorías: 'entrenamiento', 'competencia', 'equipo', 'ninos'
+    let galeriaFotos = [
+      { src: 'entrenamiento1.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
+      { src: 'entrenamiento2.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
+      { src: 'equipo_imagen1.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo_villa.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo4.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo1.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo2.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'competencia1.jpg', cat: 'competencia', label: 'Competencia' },
+      { src: 'competencia2.jpg', cat: 'competencia', label: 'Competencia' },
+      { src: 'competencia3.jpg', cat: 'competencia', label: 'Competencia' },
+      { src: 'competencia4.jpg', cat: 'competencia', label: 'Competencia' },
+      { src: 'competencia5.jpg', cat: 'competencia', label: 'Competencia' },
+      { src: 'competencia6.jpg', cat: 'competencia', label: 'Competencia' },
+      { src: 'competencia7.jpg', cat: 'competencia', label: 'Competencia' },
+      { src: 'competencia8.jpg', cat: 'competencia', label: 'Competencia' },
+      { src: 'competencia9.jpg', cat: 'competencia', label: 'Competencia' },
+      { src: 'competencia10.jpg', cat: 'competencia', label: 'Competencia' },
+      { src: 'competencia11.jpg', cat: 'competencia', label: 'Competencia' },
+      { src: 'competencia12.jpg', cat: 'competencia', label: 'Competencia' },
+      { src: 'competencia13.jpg', cat: 'competencia', label: 'Competencia' },
+      { src: 'competencia14.jpg', cat: 'competencia', label: 'Competencia' },
+      { src: 'niño1.png', cat: 'ninos', label: 'Niños' },
+      { src: 'niños2.png', cat: 'ninos', label: 'Niños' },
+      { src: 'niños3.png', cat: 'ninos', label: 'Niños' },
+
+    ];
+    let galFiltroActivo = 'all';
+    let lbIndex = 0;
+
+    const LABELS_CAT = {
+      'entrenamiento': 'Entrenamiento',
+      'competencia': 'Competencia',
+      'equipo': 'Equipo',
+      'ninos': 'Niños',
+    };
+
+    function galRenderizar() {
+      const grid = document.getElementById('galeriaGrid');
+      // Filtrar
+      const visibles = galeriaFotos.filter((f, i) => galFiltroActivo === 'all' || f.cat === galFiltroActivo);
+      const indices = galeriaFotos.map((f, i) => i).filter(i => galFiltroActivo === 'all' || galeriaFotos[i].cat === galFiltroActivo);
+
+      // Heights alternativos para efecto masonry visual
+      const heights = [220, 140, 180, 160, 200, 140, 170, 150, 210, 145, 185, 165];
+      const emojis = { equipo: '👊', entrenamiento: '💪', competencia: '🏆', ninos: '⭐' };
+      const grads = {
+        equipo: 'linear-gradient(135deg,#1a0a1a 0%,#1a1a1a 100%)',
+        entrenamiento: 'linear-gradient(135deg,#1a0a0a 0%,#2a1a1a 100%)',
+        competencia: 'linear-gradient(135deg,#200000 0%,#1a1a1a 100%)',
+        ninos: 'linear-gradient(135deg,#0a1a0a 0%,#1a1a1a 100%)',
+      };
+
+      grid.innerHTML = '';
+      indices.forEach((originalIdx, visIdx) => {
+        const f = galeriaFotos[originalIdx];
+        const item = document.createElement('div');
+        item.className = 'gal-item';
+        item.dataset.cat = f.cat;
+        item.dataset.idx = originalIdx;
+        const h = heights[visIdx % heights.length];
+
+        if (f.src) {
+          item.innerHTML = `
+        <img src="${f.src}" alt="${LABELS_CAT[f.cat] || ''}" loading="lazy" style="min-height:${h}px;">
+        <div class="gal-item-overlay"><span class="gal-item-label">${LABELS_CAT[f.cat] || f.cat}</span></div>
+      `;
+        } else {
+          const eg = emojis[f.cat] || '🥊';
+          const gr = grads[f.cat] || 'linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 100%)';
+          item.innerHTML = `
+        <div class="gal-placeholder" style="min-height:${h}px; background:${gr}; font-size:3.5rem;">${eg}</div>
+        <div class="gal-item-overlay"><span class="gal-item-label">${LABELS_CAT[f.cat] || f.cat}</span></div>
+      `;
+        }
+        item.onclick = () => { lbOpenByIndex(originalIdx, indices); };
+        grid.appendChild(item);
+      });
+    }
+
+    function galFiltrar(btn, cat) {
+      document.querySelectorAll('.gal-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      galFiltroActivo = cat;
+      galRenderizar();
+    }
+
+    // ---- LIGHTBOX ----
+    let lbIndices = []; // índices visibles actuales
+
+    function lbOpenByIndex(originalIdx, indices) {
+      lbIndices = indices;
+      lbIndex = indices.indexOf(originalIdx);
+      lbMostrar();
+    }
+
+    function lbOpen(visIdx) {
+      const indices = galeriaFotos.map((_, i) => i).filter(i => galFiltroActivo === 'all' || galeriaFotos[i].cat === galFiltroActivo);
+      lbIndices = indices;
+      lbIndex = visIdx;
+      lbMostrar();
+    }
+
+    function lbMostrar() {
+      const idx = lbIndices[lbIndex];
+      const f = galeriaFotos[idx];
+      const img = document.getElementById('lbImg');
+      if (f && f.src) {
+        img.src = f.src;
+        img.style.display = 'block';
+      } else {
+        img.src = '';
+        img.style.display = 'none';
+        // Mostrar placeholder grande
+      }
+      document.getElementById('lbCounter').textContent = `${lbIndex + 1} / ${lbIndices.length}`;
+      document.getElementById('lbTag').textContent = f ? (LABELS_CAT[f.cat] || f.cat) : '';
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function lbClose() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function lbBgClose(e) {
+      if (e.target === document.getElementById('lightbox')) lbClose();
+    }
+
+    function lbMove(dir) {
+      lbIndex = (lbIndex + dir + lbIndices.length) % lbIndices.length;
+      lbMostrar();
+    }
+
+    // Teclado
+    document.addEventListener('keydown', e => {
+      if (!document.getElementById('lightbox').classList.contains('open')) return;
+      if (e.key === 'ArrowRight') lbMove(1);
+      if (e.key === 'ArrowLeft') lbMove(-1);
+      if (e.key === 'Escape') lbClose();
+    });
+
+    // Inicializar galería
+    galRenderizar();
+
+    // =====================
+    // LOGIN
+    // =====================
+    function cerrarLogin() {
+      document.getElementById('loginOverlay').classList.remove('open');
+      document.getElementById('loginError').classList.remove('show');
+      document.getElementById('loginUser').value = '';
+      document.getElementById('loginPass').value = '';
+    }
+
+    function doLogin() {
+      const user = document.getElementById('loginUser').value.trim();
+      const pass = document.getElementById('loginPass').value;
+      // Cambia estas credenciales por las que quieras
+      if (user === 'villaboxing' && pass === 'admin2026') {
+        window.location.href = 'Dashboard.html';
+      } else {
+        document.getElementById('loginError').classList.add('show');
+        document.getElementById('loginPass').value = '';
+        document.getElementById('loginPass').focus();
+      }
+    }
+
+    // Cerrar con clic fuera del modal
+    document.getElementById('loginOverlay').addEventListener('click', function (e) {
+      if (e.target === this) cerrarLogin();
+    });
+
+    // Toggle menú móvil
+    function toggleMenu() {
+      const links = document.querySelector('.nav-links');
+      links.classList.toggle('active');
+    }
+
+    // Cerrar menú al hacer click en un link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('active');
+      });
+    });
+  </script>
+
+</body>
+
+</html>
