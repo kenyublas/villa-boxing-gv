@@ -1187,7 +1187,7 @@
                     <div class="form-group full">
                         <label class="form-label">Turno *</label>
                         <div class="radio-group" id="rgTurno">
-                            <div class="radio-opt" data-val="Mañana">Mañana — 8:00 a.m.</div>
+                            <div class="radio-opt" data-val="Mañana">Mañana — 9:30 a.m.</div>
                             <div class="radio-opt" data-val="Noche">Noche — 7:00 p.m. / 8:30 p.m.</div>
                         </div>
                     </div>
@@ -1551,7 +1551,7 @@
             const rg = document.getElementById('rgHorario');
             if (!turno) { wrap.style.display = 'none'; return; }
             wrap.style.display = 'block';
-            const horarios = turno === 'Mañana' ? ['8:00 a.m.'] : ['7:00 p.m.', '8:30 p.m.'];
+            const horarios = turno === 'Mañana' ? ['9:30 a.m.'] : ['7:00 p.m.', '8:30 p.m.'];
             rg.innerHTML = horarios.map((h, i) =>
                 `<div class="radio-opt${i === 0 ? ' selected' : ''}" data-val="${h}">${h}</div>`).join('');
             rg.querySelectorAll('.radio-opt').forEach(opt => {

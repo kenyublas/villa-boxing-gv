@@ -1748,7 +1748,8 @@
             fáciles. Aquí se trabaja con disciplina, técnica y constancia.</p>
           <p>Desde niños hasta adultos, desde principiantes hasta peleadores de competencia — cada alumno recibe
             atención personalizada para alcanzar su mejor versión.</p>
-          <p>Nuestro equipo de entrenadores tiene años de experiencia en el deporte. Sabemos lo que se necesita para
+          <p>Nuestro equipo de entrenadores de <strong>Villa Boxing</strong> tiene años de experiencia en el deporte.
+            Sabemos lo que se necesita para
             <strong>subir al ring con confianza.</strong>
           </p>
           <a href="#contacto" class="btn-primary" style="margin-top:1.5rem; display:inline-block;">Conoce el gym</a>
@@ -1826,7 +1827,7 @@
           <div class="champion-placeholder">🥊</div>
           <div class="champion-overlay"></div>
           <div class="champion-info">
-            <span class="champion-badge">Campeón Regional</span>
+            <span class="champion-badge">Campeón</span>
             <div class="champion-name">Joseph Brayan </div>
             <div class="champion-desc">Categoría · Año del logro</div>
           </div>
@@ -1837,7 +1838,7 @@
           <img src="campeon_2.png" alt="Nombre Apellido">
           <div class="champion-overlay"></div>
           <div class="champion-info">
-            <span class="champion-badge">Competidor</span>
+            <span class="champion-badge">Campeón</span>
             <div class="champion-name">Carmen Santiago </div>
 
           </div>
@@ -1848,7 +1849,7 @@
           <img src="campeon_3.png" alt="Nombre Apellido">
           <div class="champion-overlay"></div>
           <div class="champion-info">
-            <span class="champion-badge">Competidor</span>
+            <span class="champion-badge">Campeón</span>
             <div class="champion-name">Abraham Moisés </div>
 
           </div>
@@ -1859,7 +1860,7 @@
           <img src="campeon_4.png" alt="Nombre Apellido">
           <div class="champion-overlay"></div>
           <div class="champion-info">
-            <span class="champion-badge">Competidor</span>
+            <span class="champion-badge">Campeón</span>
             <div class="champion-name"> Adriano Lozano</div>
 
           </div>
@@ -1870,7 +1871,7 @@
           <img src="campeon_5.png" alt="Nombre Apellido">
           <div class="champion-overlay"></div>
           <div class="champion-info">
-            <span class="champion-badge">Competidor</span>
+            <span class="champion-badge">Campeón</span>
             <div class="champion-name"> Jakziel Huaqui </div>
 
           </div>
@@ -1879,7 +1880,7 @@
           <img src="campeon_6.png" alt="Nombre Apellido">
           <div class="champion-overlay"></div>
           <div class="champion-info">
-            <span class="champion-badge">Competidor</span>
+            <span class="champion-badge">Campeón</span>
             <div class="champion-name">Jean carlos Lucas </div>
 
           </div>
@@ -1889,7 +1890,7 @@
           <img src="campeon_7.png" alt="Nombre Apellido">
           <div class="champion-overlay"></div>
           <div class="champion-info">
-            <span class="champion-badge">Competidor</span>
+            <span class="champion-badge">Campeón</span>
             <div class="champion-name">Luana Falcon</div>
 
           </div>
@@ -1986,7 +1987,7 @@
             <div class="precio-sub">Clases interdiarias</div>
           </div>
           <div class="precio-divider"></div>
-          <a href="https://wa.me/51982097968?text=Hola!%20Quiero%20mi%20d%C3%ADa%20de%20prueba%20gratis%20%F0%9F%A5%8A"
+          <a href="https://wa.me/51982097968?text=Hola!%20Quiero%20mi%20d%C3%ADa%20de%20prueba%20gratis%20%"
             target="_blank" class="btn-primary" style="display:block; text-align:center; margin-top:0.5rem;">Solicitar
             día de prueba gratis</a>
         </div>
@@ -2251,7 +2252,6 @@
         <button class="gal-filter" data-filter="competencia"
           onclick="galFiltrar(this,'competencia')">Competencia</button>
         <button class="gal-filter" data-filter="equipo" onclick="galFiltrar(this,'equipo')">Equipo</button>
-        <button class="gal-filter" data-filter="ninos" onclick="galFiltrar(this,'ninos')">Niños</button>
       </div>
 
       <!-- Grid de fotos -->
@@ -2409,13 +2409,22 @@
     });
 
     function shopVisible() {
-      return Math.floor((track.parentElement.offsetWidth + 16) / CARD_W);
+      const visible = Math.floor((track.parentElement.offsetWidth + 16) / CARD_W);
+      return Math.max(1, visible);
     }
 
     function shopGoTo(idx) {
-      const max = cards.length - shopVisible();
+      const visible = shopVisible();
+      const max = Math.max(0, cards.length - visible);
       shopCurrent = Math.max(0, Math.min(idx, max));
-      track.style.transform = `translateX(-${shopCurrent * CARD_W}px)`;
+      const containerW = track.parentElement.offsetWidth;
+      const trackW = track.scrollWidth;
+      const maxScroll = Math.max(0, trackW - containerW);
+
+      let targetX = shopCurrent * CARD_W;
+      if (targetX > maxScroll) targetX = maxScroll;
+
+      track.style.transform = `translateX(-${targetX}px)`;
       document.querySelectorAll('.shop-dot').forEach((d, i) => d.classList.toggle('active', i === shopCurrent));
     }
 
@@ -2477,9 +2486,9 @@
       { src: 'competencia12.jpg', cat: 'competencia', label: 'Competencia' },
       { src: 'competencia13.jpg', cat: 'competencia', label: 'Competencia' },
       { src: 'competencia14.jpg', cat: 'competencia', label: 'Competencia' },
-      { src: 'niño1.png', cat: 'ninos', label: 'Niños' },
-      { src: 'niños2.png', cat: 'ninos', label: 'Niños' },
-      { src: 'niños3.png', cat: 'ninos', label: 'Niños' },
+      { src: 'niño1.png', cat: 'equipo', label: 'Equipo' },
+      { src: 'niños2.png', cat: 'equipo', label: 'Equipo' },
+      { src: 'niños3.png', cat: 'equipo', label: 'Equipo' },
 
     ];
     let galFiltroActivo = 'all';
@@ -2489,7 +2498,6 @@
       'entrenamiento': 'Entrenamiento',
       'competencia': 'Competencia',
       'equipo': 'Equipo',
-      'ninos': 'Niños',
     };
 
     function galRenderizar() {
@@ -2500,12 +2508,11 @@
 
       // Heights alternativos para efecto masonry visual
       const heights = [220, 140, 180, 160, 200, 140, 170, 150, 210, 145, 185, 165];
-      const emojis = { equipo: '👊', entrenamiento: '💪', competencia: '🏆', ninos: '⭐' };
+      const emojis = { equipo: '👊', entrenamiento: '💪', competencia: '🏆' };
       const grads = {
         equipo: 'linear-gradient(135deg,#1a0a1a 0%,#1a1a1a 100%)',
         entrenamiento: 'linear-gradient(135deg,#1a0a0a 0%,#2a1a1a 100%)',
         competencia: 'linear-gradient(135deg,#200000 0%,#1a1a1a 100%)',
-        ninos: 'linear-gradient(135deg,#0a1a0a 0%,#1a1a1a 100%)',
       };
 
       grid.innerHTML = '';
