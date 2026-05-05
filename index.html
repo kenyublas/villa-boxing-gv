@@ -1386,26 +1386,27 @@
       border-color: var(--red);
     }
 
-    /* Grid masonry-like */
     .galeria-grid {
-      columns: 4;
-      column-gap: 6px;
-      margin-bottom: 2.5rem;
+      display: flex;
+      gap: 16px;
+      transition: transform 0.45s cubic-bezier(.4, 0, .2, 1);
+      will-change: transform;
     }
 
     .gal-item {
-      break-inside: avoid;
-      margin-bottom: 6px;
+      flex: 0 0 320px;
       position: relative;
       overflow: hidden;
       cursor: pointer;
       background: var(--gray2);
       display: block;
+      height: 220px;
     }
 
     .gal-item img {
       width: 100%;
-      display: block;
+      height: 100%;
+      object-fit: cover;
       transition: transform 0.45s ease, filter 0.3s;
       filter: grayscale(15%);
     }
@@ -1810,8 +1811,9 @@
       </div>
       <div class="video-container">
         <!-- Si usas un video local -->
-        <video id="gymVideo" autoplay loop muted playsinline width="100%" style="display: block;">
+        <video id="gymVideo" autoplay muted playsinline width="100%" style="display: block;">
           <source src="video1.mp4" type="video/mp4">
+          <source src="video2.mp4" type="video/mp4">
         </video>
         <!-- Si usas YouTube, reemplaza el <video> por un <iframe> -->
       </div>
@@ -2302,11 +2304,18 @@
         <button class="gal-filter" data-filter="equipo" onclick="galFiltrar(this,'equipo')">Equipo</button>
       </div>
 
-      <!-- Grid de fotos -->
-      <div class="galeria-grid" id="galeriaGrid">
-        <!-- Las fotos se renderizan aquí dinámicamente via JS -->
-        <!-- Fotos placeholder de ejemplo que el cliente reemplaza con las suyas -->
-
+      <!-- Carrusel de fotos -->
+      <div class="shop-carousel-wrap" style="margin-top: 2.5rem;">
+        <div class="shop-track-outer">
+          <div class="galeria-grid" id="galeriaGrid">
+            <!-- Las fotos se renderizan aquí dinámicamente via JS -->
+          </div>
+        </div>
+        <div class="shop-nav">
+          <button class="shop-btn" id="galPrev" onclick="galMove(-1)">&#8249;</button>
+          <button class="shop-btn" id="galNext" onclick="galMove(1)">&#8250;</button>
+          <div class="shop-dots" id="galDots"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -2516,11 +2525,36 @@
       { src: 'entrenamiento1.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
       { src: 'entrenamiento2.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
       { src: 'entrenamiento3.png', cat: 'entrenamiento', label: 'Entrenamiento' },
+      { src: 'entrenamiento4.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
+      { src: 'entrenamiento5.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
+      { src: 'entrenamiento6.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
+      { src: 'entrenamiento7.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
+      { src: 'entrenamiento8.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
+      { src: 'entrenamiento9.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
+      { src: 'entrenamiento10.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
+      { src: 'entrenamiento11.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
+      { src: 'entrenamiento12.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
+      { src: 'entrenamiento13.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
+      { src: 'entrenamiento14.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
       { src: 'equipo_imagen1.jpg', cat: 'equipo', label: 'Equipo' },
       { src: 'equipo_villa.jpg', cat: 'equipo', label: 'Equipo' },
       { src: 'equipo4.jpg', cat: 'equipo', label: 'Equipo' },
       { src: 'equipo1.jpg', cat: 'equipo', label: 'Equipo' },
       { src: 'equipo2.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo6.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo7.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo8.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo9.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo10.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo11.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo12.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo13.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo14.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo15.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo16.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo17.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo18.jpg', cat: 'equipo', label: 'Equipo' },
+      { src: 'equipo19.jpg', cat: 'equipo', label: 'Equipo' },
       { src: 'competencia1.jpg', cat: 'competencia', label: 'Competencia' },
       { src: 'competencia2.jpg', cat: 'competencia', label: 'Competencia' },
       { src: 'competencia3.jpg', cat: 'competencia', label: 'Competencia' },
@@ -2535,6 +2569,8 @@
       { src: 'competencia12.jpg', cat: 'competencia', label: 'Competencia' },
       { src: 'competencia13.jpg', cat: 'competencia', label: 'Competencia' },
       { src: 'competencia14.jpg', cat: 'competencia', label: 'Competencia' },
+      { src: 'competencia15.jpg', cat: 'competencia', label: 'Competencia' },
+      { src: 'competencia16.jpg', cat: 'competencia', label: 'Competencia' },
       { src: 'niño1.png', cat: 'equipo', label: 'Equipo' },
       { src: 'niños2.png', cat: 'equipo', label: 'Equipo' },
       { src: 'niños3.png', cat: 'equipo', label: 'Equipo' },
@@ -2542,6 +2578,8 @@
     ];
     let galFiltroActivo = 'all';
     let lbIndex = 0;
+    let galCurrent = 0;
+    const GAL_CARD_W = 336; // 320px + 16px gap
 
     const LABELS_CAT = {
       'entrenamiento': 'Entrenamiento',
@@ -2552,11 +2590,8 @@
     function galRenderizar() {
       const grid = document.getElementById('galeriaGrid');
       // Filtrar
-      const visibles = galeriaFotos.filter((f, i) => galFiltroActivo === 'all' || f.cat === galFiltroActivo);
       const indices = galeriaFotos.map((f, i) => i).filter(i => galFiltroActivo === 'all' || galeriaFotos[i].cat === galFiltroActivo);
 
-      // Heights alternativos para efecto masonry visual
-      const heights = [220, 140, 180, 160, 200, 140, 170, 150, 210, 145, 185, 165];
       const emojis = { equipo: '👊', entrenamiento: '💪', competencia: '🏆' };
       const grads = {
         equipo: 'linear-gradient(135deg,#1a0a1a 0%,#1a1a1a 100%)',
@@ -2571,24 +2606,73 @@
         item.className = 'gal-item';
         item.dataset.cat = f.cat;
         item.dataset.idx = originalIdx;
-        const h = heights[visIdx % heights.length];
 
         if (f.src) {
           item.innerHTML = `
-        <img src="${f.src}" alt="${LABELS_CAT[f.cat] || ''}" loading="lazy" style="min-height:${h}px;">
+        <img src="${f.src}" alt="${LABELS_CAT[f.cat] || ''}" loading="lazy">
         <div class="gal-item-overlay"><span class="gal-item-label">${LABELS_CAT[f.cat] || f.cat}</span></div>
       `;
         } else {
           const eg = emojis[f.cat] || '🥊';
           const gr = grads[f.cat] || 'linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 100%)';
           item.innerHTML = `
-        <div class="gal-placeholder" style="min-height:${h}px; background:${gr}; font-size:3.5rem;">${eg}</div>
+        <div class="gal-placeholder" style="height:100%; background:${gr}; font-size:3.5rem; display:flex; align-items:center; justify-content:center;">${eg}</div>
         <div class="gal-item-overlay"><span class="gal-item-label">${LABELS_CAT[f.cat] || f.cat}</span></div>
       `;
         }
         item.onclick = () => { lbOpenByIndex(originalIdx, indices); };
         grid.appendChild(item);
       });
+
+      // Generar puntos por "páginas" (grupos de fotos) para que no haya tantos
+      const dotsEl = document.getElementById('galDots');
+      const containerW = grid.parentElement.offsetWidth;
+      const visible = Math.floor((containerW + 16) / GAL_CARD_W) || 1;
+      const numPages = Math.ceil(indices.length / visible);
+
+      dotsEl.innerHTML = '';
+      if (numPages > 1) {
+        for (let i = 0; i < numPages; i++) {
+          const d = document.createElement('div');
+          d.className = 'shop-dot' + (i === 0 ? ' active' : '');
+          const targetIdx = i * visible;
+          d.onclick = () => galGoTo(Math.min(targetIdx, indices.length - visible));
+          dotsEl.appendChild(d);
+        }
+      }
+      galGoTo(0);
+    }
+
+    function galGoTo(idx) {
+      const track = document.getElementById('galeriaGrid');
+      const containerW = track.parentElement.offsetWidth;
+      const visible = Math.floor((containerW + 16) / GAL_CARD_W);
+      const max = Math.max(0, track.children.length - visible);
+
+      galCurrent = Math.max(0, Math.min(idx, max));
+      const trackW = track.scrollWidth;
+      const maxScroll = Math.max(0, trackW - containerW);
+
+      let targetX = galCurrent * GAL_CARD_W;
+      if (targetX > maxScroll) targetX = maxScroll;
+
+      track.style.transform = `translateX(-${targetX}px)`;
+
+      // Resaltar el punto de la página actual
+      const activePage = Math.round(galCurrent / visible);
+      document.querySelectorAll('#galDots .shop-dot').forEach((d, i) => d.classList.toggle('active', i === activePage));
+    }
+
+    function galMove(dir) {
+      const track = document.getElementById('galeriaGrid');
+      const containerW = track.parentElement.offsetWidth;
+      const visible = Math.floor((containerW + 16) / GAL_CARD_W) || 1;
+      const max = Math.max(0, track.children.length - visible);
+
+      let next = galCurrent + dir;
+      if (next > max) next = 0;      // Vuelve al inicio
+      else if (next < 0) next = max; // Va al final
+      galGoTo(next);
     }
 
     function galFiltrar(btn, cat) {
@@ -2698,13 +2782,26 @@
       });
     });
 
-    // Reproducción automática con volumen bajo tras interacción
+    // Lógica de reproducción secuencial de videos
+    const gymVideo = document.getElementById('gymVideo');
+    const gymPlaylist = ['video1.mp4', 'video2.mp4']; // Lista de tus videos
+    let currentVideoIdx = 0;
+
+    if (gymVideo) {
+      // Cuando termina un video, carga y reproduce el siguiente
+      gymVideo.addEventListener('ended', () => {
+        currentVideoIdx = (currentVideoIdx + 1) % gymPlaylist.length;
+        gymVideo.src = gymPlaylist[currentVideoIdx];
+        gymVideo.play();
+      });
+    }
+
+    // Activar audio y asegurar reproducción tras el primer clic del usuario
     window.addEventListener('click', () => {
-      const video = document.getElementById('gymVideo');
-      if (video) {
-        video.muted = false;
-        video.volume = 0.15; // 15% de volumen para que sea ambiental
-        video.play().catch(err => console.log("Autoplay bloqueado:", err));
+      if (gymVideo) {
+        gymVideo.muted = false;
+        gymVideo.volume = 0.5; // Subimos el volumen al 50%
+        gymVideo.play().catch(err => console.log("Autoplay bloqueado:", err));
       }
     }, { once: true }); // Solo se ejecuta una vez al primer clic
   </script>
