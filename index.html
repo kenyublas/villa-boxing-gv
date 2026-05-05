@@ -2511,7 +2511,7 @@
     track.addEventListener('touchstart', e => { shopStartX = e.touches[0].clientX; }, { passive: true });
     track.addEventListener('touchend', e => {
       const diff = shopStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) shopMove(diff > 0 ? 1 : -1);
+      if (Math.abs(diff) > 30) shopMove(diff > 0 ? 1 : -1);
     }, { passive: true });
 
     shopStartTimer();
@@ -2741,6 +2741,14 @@
 
     // Inicializar galería
     galRenderizar();
+
+    // Touch swipe para galería
+    const galGrid = document.getElementById('galeriaGrid');
+    galGrid.addEventListener('touchstart', e => { galStartX = e.touches[0].clientX; }, { passive: true });
+    galGrid.addEventListener('touchend', e => {
+      const diff = galStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 30) galMove(diff > 0 ? 1 : -1);
+    }, { passive: true });
 
     // =====================
     // LOGIN
