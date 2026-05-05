@@ -2508,11 +2508,11 @@
     }
 
     // Touch swipe
-    track.addEventListener('touchstart', e => { shopStartX = e.touches[0].clientX; });
+    track.addEventListener('touchstart', e => { shopStartX = e.touches[0].clientX; }, { passive: true });
     track.addEventListener('touchend', e => {
       const diff = shopStartX - e.changedTouches[0].clientX;
       if (Math.abs(diff) > 40) shopMove(diff > 0 ? 1 : -1);
-    });
+    }, { passive: true });
 
     shopStartTimer();
 
@@ -2579,6 +2579,7 @@
     let galFiltroActivo = 'all';
     let lbIndex = 0;
     let galCurrent = 0;
+    let galStartX = 0;
     const GAL_CARD_W = 336; // 320px + 16px gap
 
     const LABELS_CAT = {
