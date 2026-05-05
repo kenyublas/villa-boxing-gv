@@ -337,6 +337,28 @@
       overflow: hidden;
     }
 
+    /* VIDEO SECTION */
+    .video-experience {
+      background: var(--black);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .video-container {
+      margin-top: 0;
+      width: 100%;
+      border: 4px solid var(--red);
+      background: var(--gray2);
+      aspect-ratio: 16 / 9;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+
     /* SERVICES */
     .services {
       background: var(--black);
@@ -1651,6 +1673,12 @@
         gap: 2rem;
       }
 
+      .video-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+      }
+
       .hero-stats {
         gap: 1.5rem;
       }
@@ -1710,8 +1738,9 @@
       <p class="hero-eyebrow">Escuela de Boxeo Profesional</p>
       <h1 class="hero-title">
         FORJA TU<br>
-        <span class="accent">CARÁCTER</span><br>
-        <span class="outline">EN VILLA BOXING</span>
+        <span class="hero-title">CARÁCTER</span><br>
+        <span class="hero-titlle">EN</span>
+        <span class="accent">VILLA BOXING</span><br>
       </h1>
       <p class="hero-sub">Entrenamiento serio para quien quiere resultados reales. No importa tu nivel — aquí empiezas
         desde cero o llegas al siguiente.</p>
@@ -1766,6 +1795,25 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO EXPERIENCIA -->
+  <section class="video-experience">
+    <div class="max-w video-grid">
+      <div class="video-text">
+        <p class="section-label">Siente la adrenalina</p>
+        <h2 class="section-title">VIVE LA<br>EXPERIENCIA<br><span style="color:var(--red);">EN EL RING</span></h2>
+        <p style="margin-top: 1.5rem; color: var(--text-muted); line-height: 1.6;">Mira cómo transformamos la teoría en
+          acción. Entrenamientos intensos diseñados para llevarte al límite.</p>
+      </div>
+      <div class="video-container">
+        <!-- Si usas un video local -->
+        <video id="gymVideo" autoplay loop muted playsinline width="100%" style="display: block;">
+          <source src="video1.mp4" type="video/mp4">
+        </video>
+        <!-- Si usas YouTube, reemplaza el <video> por un <iframe> -->
       </div>
     </div>
   </section>
@@ -2467,6 +2515,7 @@
     let galeriaFotos = [
       { src: 'entrenamiento1.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
       { src: 'entrenamiento2.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
+      { src: 'entrenamiento3.png', cat: 'entrenamiento', label: 'Entrenamiento' },
       { src: 'equipo_imagen1.jpg', cat: 'equipo', label: 'Equipo' },
       { src: 'equipo_villa.jpg', cat: 'equipo', label: 'Equipo' },
       { src: 'equipo4.jpg', cat: 'equipo', label: 'Equipo' },
@@ -2648,6 +2697,16 @@
         document.querySelector('.nav-links').classList.remove('active');
       });
     });
+
+    // Reproducción automática con volumen bajo tras interacción
+    window.addEventListener('click', () => {
+      const video = document.getElementById('gymVideo');
+      if (video) {
+        video.muted = false;
+        video.volume = 0.15; // 15% de volumen para que sea ambiental
+        video.play().catch(err => console.log("Autoplay bloqueado:", err));
+      }
+    }, { once: true }); // Solo se ejecuta una vez al primer clic
   </script>
 
 </body>
