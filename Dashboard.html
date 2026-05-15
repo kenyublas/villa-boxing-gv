@@ -1096,7 +1096,7 @@
             <select class="filter-select" id="filtroTurno" onchange="renderTabla()">
                 <option value="">Todos los turnos</option>
                 <option value="Mañana">Mañana</option>
-                <option value="Niños">Niños</option>
+                <option value="Tarde">Tarde</option>
                 <option value="Noche">Noche</option>
             </select>
             <select class="filter-select" id="filtroModal" onchange="renderTabla()">
@@ -1189,7 +1189,7 @@
                         <label class="form-label">Turno *</label>
                         <div class="radio-group" id="rgTurno">
                             <div class="radio-opt" data-val="Mañana">Mañana — 9:30 a.m.</div>
-                            <div class="radio-opt" data-val="Niños">Niños — 5:30 p.m.</div>
+                            <div class="radio-opt" data-val="Tarde">Tarde — 5:30 p.m.</div>
                             <div class="radio-opt" data-val="Noche">Noche — 7:00 p.m. / 8:30 p.m.</div>
                         </div>
                     </div>
@@ -1555,7 +1555,7 @@
             wrap.style.display = 'block';
             let horarios = [];
             if (turno === 'Mañana') horarios = ['9:30 a.m.'];
-            else if (turno === 'Niños') horarios = ['5:30 p.m.'];
+            else if (turno === 'Tarde') horarios = ['5:30 p.m.'];
             else if (turno === 'Noche') horarios = ['7:00 p.m.', '8:30 p.m.'];
             rg.innerHTML = horarios.map((h, i) =>
                 `<div class="radio-opt${i === 0 ? ' selected' : ''}" data-val="${h}">${h}</div>`).join('');
