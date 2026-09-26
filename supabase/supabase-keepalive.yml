@@ -1,0 +1,33 @@
+name: Supabase keep-alive
+
+# Llama a la BD 1 vez al día para que Supabase Free no pause el proyecto
+# (Supabase pausa tras ~7 días sin actividad).
+on:
+  schedule:
+    - cron: "17 13 * * *"   # 8:17 a.m. hora Perú, todos los días
+  workflow_dispatch:         # botón "Run workflow" para probarlo a mano
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      # La anon key es pública (ya está en js/config.js); la seguridad la da RLS.
+      SUPABASE_URL: https://orxxzqvynaugzksfhrmj.supabase.co
+      SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9yeHh6cXZ5bmF1Z3prc2Zocm1qIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc3NDQyMTEsImV4cCI6MjA5MzMyMDIxMX0.8cGSocriB-06igWSARrYgI-bfYB7VJmKAJYe75f8Deo
+    steps:
+      - name: Ping Supabase
+        run: |
+          for intento in 1 2 3; do
+            code=$(curl -sS -o resp.json -w "%{http_code}" -X POST \
+              "$SUPABASE_URL/rest/v1/rpc/keepalive" \
+              -H "apikey: $SUPABASE_ANON_KEY" \
+              -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+              -H "Content-Type: application/json" \
+              -d '{}') || code=000
+            echo "Intento $intento → HTTP $code"; cat resp.json; echo
+            if [ "$code" = "200" ]; then exit 0; fi
+            sleep 20
+          done
+          echo "::error::Supabase no respondió. ¿Proyecto pausado? Entra a supabase.com y dale Restore."
+          exit 1   # GitHub te envía un correo cuando falla

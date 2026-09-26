@@ -9,7 +9,34 @@
   <meta property="og:title" content="Villa Boxing GV — Escuela de Boxeo Profesional">
   <meta property="og:description"
     content="Entrenamiento serio para quien quiere resultados reales. Primera clase gratis.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="es_PE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <title>Villa Boxing GV — Escuela de Boxeo Profesional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="img/equipo_villa.webp" media="(min-width: 769px)">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "Villa Boxing GV",
+    "description": "Escuela de boxeo profesional. Clases para niños, adultos y competidores. Primera clase gratis.",
+    "image": "img/og.jpg",
+    "telephone": "+51982097968",
+    "address": { "@type": "PostalAddress", "streetAddress": "Jr. Dos de Mayo N° 1931", "addressCountry": "PE" },
+    "sameAs": ["https://www.instagram.com/villaboxing_gv/"],
+    "priceRange": "S/ 80 - S/ 100",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:30", "closes": "22:00" }
+    ]
+  }
+  </script>
   <link
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap"
     rel="stylesheet">
@@ -137,7 +164,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('equipo_villa.jpg');
+      background-image: url('img/equipo_villa.webp');
       background-size: cover;
       background-position: center 20%;
       background-repeat: no-repeat;
@@ -1618,6 +1645,106 @@
       display: block;
     }
 
+    /* VIDEO: botón de sonido */
+    .video-container {
+      position: relative;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-sound {
+      position: absolute;
+      right: 0.8rem;
+      bottom: 0.8rem;
+      background: rgba(10, 10, 10, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.45rem 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .video-sound:hover {
+      background: var(--red);
+      border-color: var(--red);
+    }
+
+    /* MAPA */
+    .map-wrap {
+      margin-top: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      aspect-ratio: 16 / 10;
+      background: var(--black);
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      filter: grayscale(0.4) invert(0.9) hue-rotate(180deg);
+    }
+
+    .map-link {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .map-link:hover {
+      color: var(--red);
+    }
+
+    /* FOOTER extra */
+    .footer-links {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .footer-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--red);
+    }
+
+    /* Accesibilidad */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
       nav {
@@ -1702,8 +1829,18 @@
         flex: 0 0 180px;
       }
 
-      .galeria-grid {
-        columns: 2;
+      .hero .max-w {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .hero-title {
+        font-size: clamp(3.4rem, 17vw, 4.5rem);
+      }
+
+      .gal-item {
+        flex: 0 0 260px;
+        height: 200px;
       }
 
       .lightbox-nav {
@@ -1720,18 +1857,19 @@
   <!-- NAVEGACIÓN -->
   <nav>
     <a href="#inicio" class="nav-logo">Villa<span>Boxing</span></a>
-    <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+    <button class="nav-toggle" onclick="toggleMenu()" aria-label="Abrir menú" aria-expanded="false">☰</button>
     <ul class="nav-links">
       <li><a href="#about">Nosotros</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#campeones">Campeones</a></li>
       <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#precios">Precios</a></li>
       <li><a href="#galeria">Galería</a></li>
       <li><a href="#tienda">Tienda</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <a href="https://wa.me/51982097968?text=Hola!%20Quiero%20m%C3%A1s%20info%20sobre%20Villa%20Boxing%20GV%20"
-      target="_blank" class="nav-cta">Únete Ahora</a>
+    <a href="https://wa.me/51982097968?text=Hola!%20Quiero%20m%C3%A1s%20info%20sobre%20Villa%20Boxing%20GV"
+      target="_blank" rel="noopener" class="nav-cta">Únete Ahora</a>
   </nav>
 
   <!-- HERO -->
@@ -1740,15 +1878,14 @@
       <p class="hero-eyebrow">Escuela de Boxeo Profesional</p>
       <h1 class="hero-title">
         FORJA TU<br>
-        <span class="hero-title">CARÁCTER</span><br>
-        <span class="hero-titlle">EN</span>
-        <span class="accent">VILLA BOXING</span><br>
+        CARÁCTER<br>
+        EN <span class="accent">VILLA BOXING</span>
       </h1>
       <p class="hero-sub">Entrenamiento serio para quien quiere resultados reales. No importa tu nivel — aquí empiezas
         desde cero o llegas al siguiente.</p>
       <div class="hero-actions">
-        <a href="https://wa.me/51982097968?text=Hola!%20Quiero%20reservar%20mi%20clase%20gratis%20en%20Villa%20Boxing%20GV%20"
-          target="_blank" class="btn-primary">Primera clase gratis</a>
+        <a href="https://wa.me/51982097968?text=Hola!%20Quiero%20reservar%20mi%20clase%20gratis%20en%20Villa%20Boxing%20GV"
+          target="_blank" rel="noopener" class="btn-primary">Primera clase gratis</a>
         <a href="#servicios" class="btn-outline">Ver programas</a>
       </div>
       <div class="hero-stats">
@@ -1788,7 +1925,7 @@
         <div>
           <div class="about-box"
             style="padding:0; overflow:hidden; position:relative; border-radius:8px; aspect-ratio: 3/4; border: 5px solid var(--red);">
-            <img src="entrenador.png" alt="Entrenador Villa Boxing"
+            <img src="img/entrenador.webp" alt="Gonzalo Villanueva, entrenador principal de Villa Boxing GV" loading="lazy" width="1086" height="1448"
               style="width:100%; height:100%; object-fit:cover; display:block;">
             <div class="champion-overlay"></div>
             <div class="champion-info" style="text-align: left;">
@@ -1811,12 +1948,9 @@
           acción. Entrenamientos intensos diseñados para llevarte al límite.</p>
       </div>
       <div class="video-container">
-        <!-- Si usas un video local -->
-        <video id="gymVideo" autoplay muted playsinline width="100%" style="display: block;">
-          <source src="video1.mp4" type="video/mp4">
-          <source src="video2.mp4" type="video/mp4">
-        </video>
-        <!-- Si usas YouTube, reemplaza el <video> por un <iframe> -->
+        <video id="gymVideo" autoplay muted playsinline preload="metadata" poster="img/video-poster.webp"
+          src="video1.mp4" aria-label="Video de entrenamiento en Villa Boxing GV"></video>
+        <button class="video-sound" id="videoSound" onclick="toggleSonido()" aria-pressed="false">🔇 Activar sonido</button>
       </div>
     </div>
   </section>
@@ -1873,72 +2007,69 @@
 
         <!-- CARD GRANDE DESTACADA -->
         <div class="champion-card featured">
-          <img src="campeon_1.png" alt="Nombre Apellido">
-          <!-- Reemplaza con: <img src="campeon_1.jpg" alt="Nombre Apellido"> -->
-          <div class="champion-placeholder">🥊</div>
+          <img src="img/campeon_1.webp" alt="Joseph Brayan, campeón de Villa Boxing GV" loading="lazy">
           <div class="champion-overlay"></div>
           <div class="champion-info">
             <span class="champion-badge">Campeón</span>
-            <div class="champion-name">Joseph Brayan </div>
-            <div class="champion-desc">Categoría · Año del logro</div>
+            <div class="champion-name">Joseph Brayan</div>
           </div>
         </div>
 
         <!-- CARD 2 -->
         <div class="champion-card">
-          <img src="campeon_2.png" alt="Nombre Apellido">
+          <img src="img/campeon_2.webp" alt="Carmen Santiago, campeón de Villa Boxing GV" loading="lazy">
           <div class="champion-overlay"></div>
           <div class="champion-info">
             <span class="champion-badge">Campeón</span>
-            <div class="champion-name">Carmen Santiago </div>
+            <div class="champion-name">Carmen Santiago</div>
 
           </div>
         </div>
 
         <!-- CARD 3 -->
         <div class="champion-card">
-          <img src="campeon_3.png" alt="Nombre Apellido">
+          <img src="img/campeon_3.webp" alt="Abraham Moisés, campeón de Villa Boxing GV" loading="lazy">
           <div class="champion-overlay"></div>
           <div class="champion-info">
             <span class="champion-badge">Campeón</span>
-            <div class="champion-name">Abraham Moisés </div>
+            <div class="champion-name">Abraham Moisés</div>
 
           </div>
         </div>
 
         <!-- CARD 4 -->
         <div class="champion-card">
-          <img src="campeon_4.png" alt="Nombre Apellido">
+          <img src="img/campeon_4.webp" alt="Adriano Lozano, campeón de Villa Boxing GV" loading="lazy">
           <div class="champion-overlay"></div>
           <div class="champion-info">
             <span class="champion-badge">Campeón</span>
-            <div class="champion-name"> Adriano Lozano</div>
+            <div class="champion-name">Adriano Lozano</div>
 
           </div>
         </div>
 
         <!-- CARD 5 -->
         <div class="champion-card">
-          <img src="campeon_5.png" alt="Nombre Apellido">
+          <img src="img/campeon_5.webp" alt="Jakziel Huaqui, campeón de Villa Boxing GV" loading="lazy">
           <div class="champion-overlay"></div>
           <div class="champion-info">
             <span class="champion-badge">Campeón</span>
-            <div class="champion-name"> Jakziel Huaqui </div>
+            <div class="champion-name">Jakziel Huaqui</div>
 
           </div>
         </div>
         <div class="champion-card">
-          <img src="campeon_6.png" alt="Nombre Apellido">
+          <img src="img/campeon_6.webp" alt="Jean Carlos Lucas, campeón de Villa Boxing GV" loading="lazy">
           <div class="champion-overlay"></div>
           <div class="champion-info">
             <span class="champion-badge">Campeón</span>
-            <div class="champion-name">Jean carlos Lucas </div>
+            <div class="champion-name">Jean Carlos Lucas</div>
 
           </div>
         </div>
 
         <div class="champion-card">
-          <img src="campeon_7.png" alt="Nombre Apellido">
+          <img src="img/campeon_7.webp" alt="Luana Falcon, campeón de Villa Boxing GV" loading="lazy">
           <div class="champion-overlay"></div>
           <div class="champion-info">
             <span class="champion-badge">Campeón</span>
@@ -1949,8 +2080,8 @@
       </div>
 
       <div class="champions-cta">
-        <a href="https://wa.me/51982097968?text=Hola!%20Quiero%20reservar%20mi%20clase%20gratis%20en%20Villa%20Boxing%20GV%20%"
-          target="_blank" class="btn-primary">Empieza tu historia</a>
+        <a href="https://wa.me/51982097968?text=Hola!%20Quiero%20reservar%20mi%20clase%20gratis%20en%20Villa%20Boxing%20GV"
+          target="_blank" rel="noopener" class="btn-primary">Empieza tu historia</a>
         <p>¿Quieres ser el próximo? Tu primera clase es gratis.</p>
       </div>
     </div>
@@ -2038,8 +2169,8 @@
             <div class="precio-sub">Clases interdiarias</div>
           </div>
           <div class="precio-divider"></div>
-          <a href="https://wa.me/51982097968?text=Hola!%20Quiero%20mi%20d%C3%ADa%20de%20prueba%20gratis%20%"
-            target="_blank" class="btn-primary" style="display:block; text-align:center; margin-top:0.5rem;">Solicitar
+          <a href="https://wa.me/51982097968?text=Hola!%20Quiero%20mi%20d%C3%ADa%20de%20prueba%20gratis"
+            target="_blank" rel="noopener" class="btn-primary" style="display:block; text-align:center; margin-top:0.5rem;">Solicitar
             día de prueba gratis</a>
         </div>
       </div>
@@ -2089,208 +2220,15 @@
       <div class="shop-carousel-wrap">
         <div class="shop-track-outer">
           <div class="shop-track" id="shopTrack">
-
-            <!-- PRODUCTO 1 — reemplaza src="producto_1.jpg" con tu foto -->
-            <div class="shop-card">
-              <img src="negro.png" onclick="shopImgOpen(0,event)" style="cursor:zoom-in" alt="Polo Villa Boxing" class="shop-img">
-              <!-- <img src="producto_1.jpg" alt="Polo Villa Boxing" class="shop-img"> -->
-              <div class="shop-body">
-                <div class="shop-name">Polo Villa Boxing</div>
-                <div class="shop-price">S/ 45.00</div>
-                <button class="shop-wa-btn" onclick="event.stopPropagation();shopWA('Polo Villa Boxing')">
-                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  Consultar
-                </button>
-              </div>
-            </div>
-
-            <!-- PRODUCTO 2 -->
-            <div class="shop-card">
-              <img src="short.png" onclick="shopImgOpen(1,event)" style="cursor:zoom-in" alt="short deportivo" class="shop-img">
-              <!-- <img src="producto_2.jpg" alt="Guantes de box" class="shop-img"> -->
-              <div class="shop-body">
-                <div class="shop-name">short deportivo</div>
-                <div class="shop-price">S/ 45.00</div>
-                <button class="shop-wa-btn" onclick="event.stopPropagation();shopWA('short')">
-                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  Consultar
-                </button>
-              </div>
-            </div>
-
-            <!-- PRODUCTO 3 -->
-            <div class="shop-card">
-              <img src="vendas.png" onclick="shopImgOpen(2,event)" style="cursor:zoom-in" alt="vendas de Boxeo" class="shop-img">
-              <!-- <img src="producto_3.jpg" alt="Vendas para manos" class="shop-img"> -->
-              <div class="shop-body">
-                <div class="shop-name">Vendas De Boxeo</div>
-                <div class="shop-price">S/ 30.00</div>
-                <button class="shop-wa-btn" onclick="event.stopPropagation();shopWA('Vendas de Boxeo')">
-                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  Consultar
-                </button>
-              </div>
-            </div>
-
-            <!-- PRODUCTO 4 -->
-            <div class="shop-card">
-              <img src="guantes.png" onclick="shopImgOpen(3,event)" style="cursor:zoom-in" alt="GUANTES DE BOX VENUM" class="shop-img">
-              <!-- <img src="producto_4.jpg" alt="Short deportivo" class="shop-img"> -->
-              <div class="shop-body">
-                <div class="shop-name">GUANTES DE BOX VENUM</div>
-                <div class="shop-price">S/ 190.00</div>
-                <button class="shop-wa-btn" onclick="event.stopPropagation();shopWA('GUANTES DE BOX VENUM')">
-                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  Consultar
-                </button>
-              </div>
-            </div>
-
-            <!-- PRODUCTO 5 -->
-            <div class="shop-card">
-              <img src="polo_rosado.png" onclick="shopImgOpen(4,event)" style="cursor:zoom-in" alt="POLO VILLA BOXING" class="shop-img">
-              <!-- <img src="producto_5.jpg" alt="Protector bucal" class="shop-img"> -->
-              <div class="shop-body">
-                <div class="shop-name">POLO VILLA BOXING</div>
-                <div class="shop-price">S/ 45</div>
-                <button class="shop-wa-btn" onclick="event.stopPropagation();shopWA('POLO VILLA BOXING')">
-                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  Consultar
-                </button>
-              </div>
-            </div>
-
-            <!-- PRODUCTO 6 -->
-            <div class="shop-card">
-              <img src="conjunto_villaboxing.png" onclick="shopImgOpen(5,event)" style="cursor:zoom-in" alt="conjunto villaboxing" class="shop-img">
-              <div class="shop-body">
-                <div class="shop-name">Conjunto Villa Boxing</div>
-                <div class="shop-price">S/ 85.00</div>
-                <button class="shop-wa-btn" onclick="event.stopPropagation();shopWA('conjunto villaboxing')">
-                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  Consultar
-                </button>
-              </div>
-            </div>
-
-            <!-- PRODUCTO 7 -->
-            <div class="shop-card">
-              <img src="Polera_villaboxing.png" onclick="shopImgOpen(6,event)" style="cursor:zoom-in" alt="Polera Villa Boxing 2025" class="shop-img">
-              <div class="shop-body">
-                <div class="shop-name">Polera Villa Boxing 2025</div>
-                <div class="shop-price">S/ 55.00</div>
-                <button class="shop-wa-btn" onclick="event.stopPropagation();shopWA('Polera Villa Boxing 2025')">
-                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  Consultar
-                </button>
-              </div>
-            </div>
-            <!-- PRODUCTO 8 -->
-            <div class="shop-card">
-              <img src="bucales.png" onclick="shopImgOpen(7,event)" style="cursor:zoom-in" alt="bucales" class="shop-img">
-              <div class="shop-body">
-                <div class="shop-name">Bucales</div>
-                <div class="shop-price">S/ 30.00</div>
-                <button class="shop-wa-btn" onclick="event.stopPropagation();shopWA('Bucales')">
-                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  Consultar
-                </button>
-              </div>
-            </div>
-            <!-- PRODUCTO 9 -->
-            <div class="shop-card">
-              <img src="polera_rosado.png" onclick="shopImgOpen(8,event)" style="cursor:zoom-in" alt="polera rosado 2025" class="shop-img">
-              <div class="shop-body">
-                <div class="shop-name">Polera rosado VillaBoxing 2025</div>
-                <div class="shop-price">S/ 55.00</div>
-                <button class="shop-wa-btn" onclick="event.stopPropagation();shopWA('Polera rosado 2025')">
-                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  Consultar
-                </button>
-              </div>
-            </div>
-            <!-- PRODUCTO 10 -->
-            <div class="shop-card">
-              <img src="polera_blanco.png" onclick="shopImgOpen(9,event)" style="cursor:zoom-in" alt="polera blanco" class="shop-img">
-              <div class="shop-body">
-                <div class="shop-name">Polera blanco VillaBoxing 2025</div>
-                <div class="shop-price">S/ 55.00</div>
-                <button class="shop-wa-btn" onclick="event.stopPropagation();shopWA('Polera blanco')">
-                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  Consultar
-                </button>
-              </div>
-            </div>
-            <!-- PRODUCTO 11 -->
-            <div class="shop-card">
-              <img src="polera_plomo.png" onclick="shopImgOpen(10,event)" style="cursor:zoom-in" alt="polera plomo 2025" class="shop-img">
-              <div class="shop-body">
-                <div class="shop-name">Polera plomo VillaBoxing 2025</div>
-                <div class="shop-price">S/ 55.00</div>
-                <button class="shop-wa-btn" onclick="event.stopPropagation();shopWA('Polera plomo 2025')">
-                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  Consultar
-                </button>
-              </div>
-            </div>
-            <!-- PRODUCTO 12 -->
-            <div class="shop-card">
-              <img src="polera_negra_2026.png" onclick="shopImgOpen(11,event)" style="cursor:zoom-in" alt="polera negra modelo  2026-2027" class="shop-img">
-              <div class="shop-body">
-                <div class="shop-name">Polera negra VillaBoxing 2026-2027</div>
-                <div class="shop-price">S/ 60.00</div>
-                <button class="shop-wa-btn" onclick="event.stopPropagation();shopWA('Polera negra modelo  2026-2027')">
-                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  Consultar
-                </button>
-              </div>
-            </div>
-            <!-- PRODUCTO 12 -->
-            <div class="shop-card">
-              <img src="polera_blanco_2026.png" onclick="shopImgOpen(12,event)" style="cursor:zoom-in" alt="polera blanca modelo  2026-2027" class="shop-img">
-              <div class="shop-body">
-                <div class="shop-name">Polera blanca VillaBoxing 2026-2027</div>
-                <div class="shop-price">S/ 60.00</div>
-                <button class="shop-wa-btn" onclick="event.stopPropagation();shopWA('Polera blanca modelo  2026-2027')">
-                  <svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  Consultar
-                </button>
-              </div>
-            </div>
+            <!-- Los productos se generan desde el array PRODUCTOS en el script -->
           </div>
         </div>
 
 
         <!-- Controles -->
         <div class="shop-nav">
-          <button class="shop-btn" id="shopPrev" onclick="shopMove(-1)">&#8249;</button>
-          <button class="shop-btn" id="shopNext" onclick="shopMove(1)">&#8250;</button>
+          <button class="shop-btn" id="shopPrev" onclick="shopMove(-1)" aria-label="Producto anterior">&#8249;</button>
+          <button class="shop-btn" id="shopNext" onclick="shopMove(1)" aria-label="Producto siguiente">&#8250;</button>
           <div class="shop-dots" id="shopDots"></div>
           <label class="shop-auto-label" onclick="shopToggleAuto()">
             <div class="shop-toggle on" id="shopToggle">
@@ -2331,8 +2269,8 @@
           </div>
         </div>
         <div class="shop-nav">
-          <button class="shop-btn" id="galPrev" onclick="galMove(-1)">&#8249;</button>
-          <button class="shop-btn" id="galNext" onclick="galMove(1)">&#8250;</button>
+          <button class="shop-btn" id="galPrev" onclick="galMove(-1)" aria-label="Fotos anteriores">&#8249;</button>
+          <button class="shop-btn" id="galNext" onclick="galMove(1)" aria-label="Fotos siguientes">&#8250;</button>
           <div class="shop-dots" id="galDots"></div>
         </div>
       </div>
@@ -2341,9 +2279,9 @@
 
   <!-- LIGHTBOX (Restaurado para evitar errores de consola) -->
   <div class="lightbox" id="lightbox" onclick="lbBgClose(event)">
-    <button class="lightbox-close" onclick="lbClose()">✕</button>
-    <button class="lightbox-nav lightbox-prev" onclick="lbMove(-1)">‹</button>
-    <button class="lightbox-nav lightbox-next" onclick="lbMove(1)">›</button>
+    <button class="lightbox-close" onclick="lbClose()" aria-label="Cerrar">✕</button>
+    <button class="lightbox-nav lightbox-prev" onclick="lbMove(-1)" aria-label="Anterior">‹</button>
+    <button class="lightbox-nav lightbox-next" onclick="lbMove(1)" aria-label="Siguiente">›</button>
     <div class="lightbox-inner">
       <img src="" alt="" class="lightbox-img" id="lbImg">
     </div>
@@ -2358,8 +2296,8 @@
     <div class="max-w">
       <h2>¿LISTO PARA<br>EMPEZAR?</h2>
       <p>Tu primera clase es gratis. Solo tienes que dar el primer paso.</p>
-      <a href="https://wa.me/51982097968?text=Hola!%20Me%20interesa%20la%20clase%20gratis%20en%20Villa%20Boxing%20GV%20"
-        target="_blank" class="btn-white">Reserva tu clase gratis</a>
+      <a href="https://wa.me/51982097968?text=Hola!%20Me%20interesa%20la%20clase%20gratis%20en%20Villa%20Boxing%20GV"
+        target="_blank" rel="noopener" class="btn-white">Reserva tu clase gratis</a>
     </div>
   </div>
 
@@ -2383,7 +2321,7 @@
             <div class="contact-icon">📱</div>
             <div>
               <div class="contact-detail-label">Teléfono / WhatsApp</div>
-              <div class="contact-detail-val"><a href="https://wa.me/51982097968" target="_blank">+51 982 097 968</a>
+              <div class="contact-detail-val"><a href="https://wa.me/51982097968" target="_blank" rel="noopener">+51 982 097 968</a>
               </div>
             </div>
           </div>
@@ -2394,20 +2332,25 @@
             <div>
               <div class="contact-detail-label">Instagram</div>
               <div class="contact-detail-val">
-                <a href="https://www.instagram.com/villaboxing_gv/" target="_blank" class="ig-handle">
+                <a href="https://www.instagram.com/villaboxing_gv/" target="_blank" rel="noopener" rel="noopener" class="ig-handle">
                   <span class="ig-gradient">@villaboxing_gv</span>
                 </a>
               </div>
             </div>
           </div>
-          <a href="https://wa.me/51982097968?text=Hola!%20Me%20interesa%20conocer%20m%C3%A1s%20sobre%20Villa%20Boxing%20GV%20"
-            target="_blank" class="whatsapp-btn">
+          <a href="https://wa.me/51982097968?text=Hola!%20Me%20interesa%20conocer%20m%C3%A1s%20sobre%20Villa%20Boxing%20GV"
+            target="_blank" rel="noopener" class="whatsapp-btn">
             <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
             </svg>
             +51 982 097 968 — Escríbenos
           </a>
+          <div class="map-wrap">
+            <iframe id="mapaFrame" title="Ubicación de Villa Boxing GV" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <a class="map-link" id="mapaLink" target="_blank" rel="noopener">📍 Abrir en Google Maps →</a>
         </div>
         <div>
           <div style="background:var(--black); border:1px solid rgba(255,255,255,0.06); padding:2.5rem 2rem;">
@@ -2425,8 +2368,8 @@
               <div style="display:flex; align-items:center; gap:0.75rem; font-size:0.9rem; color:#aaa;"><span
                   style="color:var(--red);">✓</span> Todas las edades bienvenidas</div>
             </div>
-            <a href="https://wa.me/51982097968?text=Hola!%20Quiero%20reservar%20mi%20clase%20gratis%20en%20Villa%20Boxing%20GV%20"
-              target="_blank" class="btn-primary" style="width:100%; text-align:center; display:block;">Reservar clase
+            <a href="https://wa.me/51982097968?text=Hola!%20Quiero%20reservar%20mi%20clase%20gratis%20en%20Villa%20Boxing%20GV"
+              target="_blank" rel="noopener" class="btn-primary" style="width:100%; text-align:center; display:block;">Reservar clase
               gratis</a>
           </div>
         </div>
@@ -2437,11 +2380,15 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">Villa<span>Boxing</span> GV</div>
-    <div class="footer-copy">
-      <div>© 2026 Villa Boxing GV — Jr. Dos de Mayo N° 1931</div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/villaboxing_gv/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/51982097968" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="#horarios">Horarios</a>
     </div>
-    <button class="footer-admin" onclick="document.getElementById('loginOverlay').classList.add('open')">⚙
-      Admin</button>
+    <div class="footer-copy">
+      <div>© <span id="anioActual">2026</span> Villa Boxing GV — Jr. Dos de Mayo N° 1931</div>
+      <button class="footer-admin" onclick="abrirLogin()">⚙ Admin</button>
+    </div>
   </footer>
 
   <!-- LOGIN MODAL -->
@@ -2451,438 +2398,342 @@
       <div class="login-logo">Villa<span>Boxing</span></div>
       <div class="login-sub">Acceso administrador</div>
       <div class="login-field">
-        <label class="login-label">Usuario</label>
-        <input class="login-input" type="text" id="loginUser" placeholder="usuario" autocomplete="username">
+        <label class="login-label" for="loginUser">Correo</label>
+        <input class="login-input" type="email" id="loginUser" placeholder="admin@correo.com" autocomplete="username">
       </div>
       <div class="login-field">
-        <label class="login-label">Contraseña</label>
+        <label class="login-label" for="loginPass">Contraseña</label>
         <input class="login-input" type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password"
           onkeydown="if(event.key==='Enter') doLogin()">
       </div>
-      <button class="login-btn" onclick="doLogin()">Ingresar al sistema</button>
+      <button class="login-btn" id="loginBtn" onclick="doLogin()">Ingresar al sistema</button>
       <div class="login-error" id="loginError">Usuario o contraseña incorrectos</div>
     </div>
   </div>
 
+  <script src="js/config.js"></script>
   <script>
+    const WA = (window.VB_CONFIG && window.VB_CONFIG.WHATSAPP) || '51982097968';
+    const WA_SVG = '<svg class="shop-wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>';
+
     // =====================
-    // CARRUSEL TIENDA
+    // CONFIGURACIÓN EDITABLE
     // =====================
-    const track = document.getElementById('shopTrack');
-    const cards = track.querySelectorAll('.shop-card');
-    const dotsEl = document.getElementById('shopDots');
-    const CARD_W = 236; // 220px + 16px gap
-    let shopCurrent = 0;
-    let shopAuto = true;
-    let shopTimer = null;
-    let shopStartX = 0;
+    // Dirección para el mapa (agrega la ciudad para que Google la ubique bien)
+    const DIRECCION_MAPA = 'Jr. Dos de Mayo 1931, Huánuco, Perú';
 
-    // Crear dots
-    cards.forEach((_, i) => {
-      const d = document.createElement('div');
-      d.className = 'shop-dot' + (i === 0 ? ' active' : '');
-      dotsEl.appendChild(d);
-    });
-
-    function shopVisible() {
-      const visible = Math.floor((track.parentElement.offsetWidth + 16) / CARD_W);
-      return Math.max(1, visible);
-    }
-
-    function shopGoTo(idx) {
-      const visible = shopVisible();
-      const max = Math.max(0, cards.length - visible);
-      shopCurrent = Math.max(0, Math.min(idx, max));
-      const containerW = track.parentElement.offsetWidth;
-      const trackW = track.scrollWidth;
-      const maxScroll = Math.max(0, trackW - containerW);
-
-      let targetX = shopCurrent * CARD_W;
-      if (targetX > maxScroll) targetX = maxScroll;
-
-      track.style.transform = `translateX(-${targetX}px)`;
-      document.querySelectorAll('.shop-dot').forEach((d, i) => d.classList.toggle('active', i === shopCurrent));
-    }
-
-    function shopMove(dir) {
-      const max = cards.length - shopVisible();
-      const next = shopCurrent + dir;
-      shopGoTo(next > max ? 0 : next < 0 ? max : next);
-      if (shopAuto) { clearInterval(shopTimer); shopStartTimer(); }
-    }
-
-    function shopStartTimer() {
-      shopTimer = setInterval(() => shopMove(1), 3000);
-    }
-
-    function shopToggleAuto() {
-      shopAuto = !shopAuto;
-      document.getElementById('shopToggle').classList.toggle('on', shopAuto);
-      if (shopAuto) shopStartTimer(); else clearInterval(shopTimer);
-    }
-
-    function shopWA(producto) {
-      const msg = encodeURIComponent(`Hola! Vi en la página de Villa Boxing que tienen *${producto}* disponible. ¿Me pueden dar más información y el precio?`);
-      window.open(`https://wa.me/51982097968?text=${msg}`, '_blank');
-    }
-
-    // ---- LIGHTBOX TIENDA ----
-    const shopFotos = [
-      { src: 'negro.png',                nombre: 'Polo Villa Boxing',                  precio: 'S/ 45.00' },
-      { src: 'short.png',                nombre: 'Short Deportivo',                    precio: 'S/ 45.00' },
-      { src: 'vendas.png',               nombre: 'Vendas de Boxeo',                    precio: 'S/ 30.00' },
-      { src: 'guantes.png',              nombre: 'Guantes de Box Venum',               precio: 'S/ 190.00' },
-      { src: 'polo_rosado.png',          nombre: 'Polo Villa Boxing',                  precio: 'S/ 45.00' },
-      { src: 'conjunto_villaboxing.png', nombre: 'Conjunto Villa Boxing',              precio: 'S/ 85.00' },
-      { src: 'Polera_villaboxing.png',   nombre: 'Polera Villa Boxing 2025',           precio: 'S/ 55.00' },
-      { src: 'bucales.png',              nombre: 'Bucales',                            precio: 'S/ 30.00' },
-      { src: 'polera_rosado.png',        nombre: 'Polera Rosado VillaBoxing 2025',     precio: 'S/ 55.00' },
-      { src: 'polera_blanco.png',        nombre: 'Polera Blanco VillaBoxing 2025',     precio: 'S/ 55.00' },
-      { src: 'polera_plomo.png',         nombre: 'Polera Plomo VillaBoxing 2025',      precio: 'S/ 55.00' },
-      { src: 'polera_negra_2026.png',    nombre: 'Polera Negra VillaBoxing 2026-2027', precio: 'S/ 60.00' },
-      { src: 'polera_blanco_2026.png',   nombre: 'Polera Blanca VillaBoxing 2026-2027',precio: 'S/ 60.00' },
+    // TIENDA — agrega, quita o cambia precios SOLO aquí
+    const PRODUCTOS = [
+      { img: 'negro.webp',                nombre: 'Polo Villa Boxing',                   precio: 45 },
+      { img: 'short.webp',                nombre: 'Short Deportivo',                     precio: 45 },
+      { img: 'vendas.webp',               nombre: 'Vendas de Boxeo',                     precio: 30 },
+      { img: 'guantes.webp',              nombre: 'Guantes de Box Venum',                precio: 190 },
+      { img: 'polo_rosado.webp',          nombre: 'Polo Villa Boxing Rosado',            precio: 45 },
+      { img: 'conjunto_villaboxing.webp', nombre: 'Conjunto Villa Boxing',               precio: 85 },
+      { img: 'polera_villaboxing.webp',   nombre: 'Polera Villa Boxing 2025',            precio: 55 },
+      { img: 'bucales.webp',              nombre: 'Bucales',                             precio: 30 },
+      { img: 'polera_rosado.webp',        nombre: 'Polera Rosada Villa Boxing 2025',     precio: 55 },
+      { img: 'polera_blanco.webp',        nombre: 'Polera Blanca Villa Boxing 2025',     precio: 55 },
+      { img: 'polera_plomo.webp',         nombre: 'Polera Plomo Villa Boxing 2025',      precio: 55 },
+      { img: 'polera_negra_2026.webp',    nombre: 'Polera Negra Villa Boxing 2026-2027', precio: 60 },
+      { img: 'polera_blanco_2026.webp',   nombre: 'Polera Blanca Villa Boxing 2026-2027',precio: 60 },
     ];
-    let shopLbIdx = 0;
 
-    function shopImgOpen(idx, e) {
-      if(e) e.stopPropagation(); // evita que dispare shopWA del card
-      shopLbIdx = idx;
-      shopLbMostrar();
-    }
+    // GALERÍA — archivo en img/ (grande) y img/thumbs/ (miniatura). Categorías: entrenamiento, competencia, equipo
+    const GALERIA = [
+      ...[...Array(14)].map((_, i) => ({ src: `entrenamiento${i + 1}.webp`, cat: 'entrenamiento' })),
+      ...['equipo_imagen1', 'equipo_villa', 'equipo4', 'equipo1', 'equipo2', 'equipo6', 'equipo7', 'equipo8', 'equipo9',
+        'equipo10', 'equipo11', 'equipo12', 'equipo14', 'equipo15', 'equipo16', 'equipo17', 'equipo18', 'equipo19',
+        'nino1', 'ninos2', 'ninos3'].map(n => ({ src: `${n}.webp`, cat: 'equipo' })),
+      ...[...Array(16)].map((_, i) => ({ src: `competencia${i + 1}.webp`, cat: 'competencia' })),
+    ];
 
-    function shopLbMostrar() {
-      const f = shopFotos[shopLbIdx];
-      const img = document.getElementById('lbImg');
-      img.src = f.src;
-      img.style.display = 'block';
-      document.getElementById('lbCounter').textContent = `${shopLbIdx + 1} / ${shopFotos.length}`;
-      document.getElementById('lbTag').textContent = f.nombre + ' — ' + f.precio;
-      // Botones nav apuntan a función de tienda
-      document.getElementById('lightbox').dataset.mode = 'shop';
-      document.getElementById('lightbox').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
+    const LABELS_CAT = { entrenamiento: 'Entrenamiento', competencia: 'Competencia', equipo: 'Equipo' };
+    const soles = n => 'S/ ' + Number(n).toFixed(2);
+    const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-    // Override lbMove para soportar modo tienda
-    const _lbMoveOrig = lbMove;
-    lbMove = function(dir) {
-      const lb = document.getElementById('lightbox');
-      if(lb.dataset.mode === 'shop') {
-        shopLbIdx = (shopLbIdx + dir + shopFotos.length) % shopFotos.length;
-        shopLbMostrar();
-      } else {
-        _lbMoveOrig(dir);
+    // =====================
+    // CARRUSEL GENÉRICO (tienda y galería)
+    // =====================
+    function crearCarrusel({ track, dots, gap = 16, auto = 0 }) {
+      let idx = 0, timer = null, startX = 0;
+      const items = () => [...track.children];
+      const itemW = () => (items()[0]?.offsetWidth || 0) + gap;
+      const visibles = () => Math.max(1, Math.floor((track.parentElement.offsetWidth + gap) / (itemW() || 1)));
+      const maxIdx = () => Math.max(0, items().length - visibles());
+
+      function pintarDots() {
+        if (!dots) return;
+        const v = visibles(), paginas = Math.ceil(items().length / v);
+        dots.innerHTML = '';
+        if (paginas <= 1) return;
+        for (let p = 0; p < paginas; p++) {
+          const d = document.createElement('button');
+          d.className = 'shop-dot';
+          d.setAttribute('aria-label', `Página ${p + 1}`);
+          d.style.border = 'none'; d.style.cursor = 'pointer'; d.style.padding = '0';
+          d.onclick = () => { ir(Math.min(p * v, maxIdx())); reiniciar(); };
+          dots.appendChild(d);
+        }
       }
-    };
+      function ir(i) {
+        idx = Math.max(0, Math.min(i, maxIdx()));
+        const maxScroll = Math.max(0, track.scrollWidth - track.parentElement.offsetWidth);
+        track.style.transform = `translateX(-${Math.min(idx * itemW(), maxScroll)}px)`;
+        if (dots) {
+          const activa = idx >= maxIdx() ? dots.children.length - 1 : Math.floor(idx / visibles());
+          [...dots.children].forEach((d, k) => d.classList.toggle('active', k === activa));
+        }
+      }
+      function mover(dir) {
+        const max = maxIdx();
+        let n = idx + dir;
+        if (n > max) n = 0; else if (n < 0) n = max;
+        ir(n);
+      }
+      function reiniciar() { if (timer) { clearInterval(timer); timer = null; } if (auto && api.autoOn) timer = setInterval(() => mover(1), auto); }
+      track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend', e => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 30) { mover(diff > 0 ? 1 : -1); reiniciar(); }
+      }, { passive: true });
+      // Pausa al pasar el mouse
+      track.parentElement.addEventListener('mouseenter', () => { if (timer) { clearInterval(timer); timer = null; } });
+      track.parentElement.addEventListener('mouseleave', reiniciar);
+      window.addEventListener('resize', () => { pintarDots(); ir(idx); });
+      const api = {
+        autoOn: !!auto,
+        refrescar() { pintarDots(); ir(0); },
+        mover(dir) { mover(dir); reiniciar(); },
+        toggleAuto() { api.autoOn = !api.autoOn; reiniciar(); return api.autoOn; },
+        reiniciar
+      };
+      return api;
+    }
 
-    // Touch swipe
-    track.addEventListener('touchstart', e => { shopStartX = e.touches[0].clientX; }, { passive: true });
-    track.addEventListener('touchend', e => {
-      const diff = shopStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 30) shopMove(diff > 0 ? 1 : -1);
-    }, { passive: true });
+    // =====================
+    // TIENDA
+    // =====================
+    const shopTrack = document.getElementById('shopTrack');
+    shopTrack.innerHTML = PRODUCTOS.map((p, i) => `
+      <div class="shop-card">
+        <img src="img/${p.img}" onclick="shopImgOpen(${i})" style="cursor:zoom-in" alt="${esc(p.nombre)}" class="shop-img" loading="lazy">
+        <div class="shop-body">
+          <div class="shop-name">${esc(p.nombre)}</div>
+          <div class="shop-price">${soles(p.precio)}</div>
+          <button class="shop-wa-btn" onclick="shopWA(${i})">${WA_SVG} Consultar</button>
+        </div>
+      </div>`).join('');
 
-    shopStartTimer();
+    const shop = crearCarrusel({ track: shopTrack, dots: document.getElementById('shopDots'), auto: 3000 });
+    shop.refrescar(); shop.reiniciar();
+    function shopMove(dir) { shop.mover(dir); }
+    function shopToggleAuto() { document.getElementById('shopToggle').classList.toggle('on', shop.toggleAuto()); }
+
+    function shopWA(i) {
+      const p = PRODUCTOS[i];
+      const msg = `Hola! Vi en la página de Villa Boxing que tienen *${p.nombre}* (${soles(p.precio)}). ¿Tienen stock y qué tallas/colores hay?`;
+      window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+    }
 
     // =====================
     // GALERÍA
     // =====================
-    // Agrega o quita fotos manualmente aquí. 
-    // Categorías: 'entrenamiento', 'competencia', 'equipo', 'ninos'
-    let galeriaFotos = [
-      { src: 'entrenamiento1.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
-      { src: 'entrenamiento2.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
-      { src: 'entrenamiento3.png', cat: 'entrenamiento', label: 'Entrenamiento' },
-      { src: 'entrenamiento4.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
-      { src: 'entrenamiento5.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
-      { src: 'entrenamiento6.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
-      { src: 'entrenamiento7.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
-      { src: 'entrenamiento8.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
-      { src: 'entrenamiento9.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
-      { src: 'entrenamiento10.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
-      { src: 'entrenamiento11.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
-      { src: 'entrenamiento12.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
-      { src: 'entrenamiento13.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
-      { src: 'entrenamiento14.jpg', cat: 'entrenamiento', label: 'Entrenamiento' },
-      { src: 'equipo_imagen1.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo_villa.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo4.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo1.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo2.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo6.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo7.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo8.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo9.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo10.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo11.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo12.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo13.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo14.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo15.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo16.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo17.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo18.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'equipo19.jpg', cat: 'equipo', label: 'Equipo' },
-      { src: 'competencia1.jpg', cat: 'competencia', label: 'Competencia' },
-      { src: 'competencia2.jpg', cat: 'competencia', label: 'Competencia' },
-      { src: 'competencia3.jpg', cat: 'competencia', label: 'Competencia' },
-      { src: 'competencia4.jpg', cat: 'competencia', label: 'Competencia' },
-      { src: 'competencia5.jpg', cat: 'competencia', label: 'Competencia' },
-      { src: 'competencia6.jpg', cat: 'competencia', label: 'Competencia' },
-      { src: 'competencia7.jpg', cat: 'competencia', label: 'Competencia' },
-      { src: 'competencia8.jpg', cat: 'competencia', label: 'Competencia' },
-      { src: 'competencia9.jpg', cat: 'competencia', label: 'Competencia' },
-      { src: 'competencia10.jpg', cat: 'competencia', label: 'Competencia' },
-      { src: 'competencia11.jpg', cat: 'competencia', label: 'Competencia' },
-      { src: 'competencia12.jpg', cat: 'competencia', label: 'Competencia' },
-      { src: 'competencia13.jpg', cat: 'competencia', label: 'Competencia' },
-      { src: 'competencia14.jpg', cat: 'competencia', label: 'Competencia' },
-      { src: 'competencia15.jpg', cat: 'competencia', label: 'Competencia' },
-      { src: 'competencia16.jpg', cat: 'competencia', label: 'Competencia' },
-      { src: 'niño1.png', cat: 'equipo', label: 'Equipo' },
-      { src: 'niños2.png', cat: 'equipo', label: 'Equipo' },
-      { src: 'niños3.png', cat: 'equipo', label: 'Equipo' },
-
-    ];
     let galFiltroActivo = 'all';
-    let lbIndex = 0;
-    let galCurrent = 0;
-    let galStartX = 0;
-    const GAL_CARD_W = 336; // 320px + 16px gap
+    const galTrack = document.getElementById('galeriaGrid');
+    const gal = crearCarrusel({ track: galTrack, dots: document.getElementById('galDots') });
 
-    const LABELS_CAT = {
-      'entrenamiento': 'Entrenamiento',
-      'competencia': 'Competencia',
-      'equipo': 'Equipo',
-    };
+    function galVisibles() { return GALERIA.filter(f => galFiltroActivo === 'all' || f.cat === galFiltroActivo); }
 
     function galRenderizar() {
-      const grid = document.getElementById('galeriaGrid');
-      // Filtrar
-      const indices = galeriaFotos.map((f, i) => i).filter(i => galFiltroActivo === 'all' || galeriaFotos[i].cat === galFiltroActivo);
-
-      const emojis = { equipo: '👊', entrenamiento: '💪', competencia: '🏆' };
-      const grads = {
-        equipo: 'linear-gradient(135deg,#1a0a1a 0%,#1a1a1a 100%)',
-        entrenamiento: 'linear-gradient(135deg,#1a0a0a 0%,#2a1a1a 100%)',
-        competencia: 'linear-gradient(135deg,#200000 0%,#1a1a1a 100%)',
-      };
-
-      grid.innerHTML = '';
-      indices.forEach((originalIdx, visIdx) => {
-        const f = galeriaFotos[originalIdx];
-        const item = document.createElement('div');
-        item.className = 'gal-item';
-        item.dataset.cat = f.cat;
-        item.dataset.idx = originalIdx;
-
-        if (f.src) {
-          item.innerHTML = `
-        <img src="${f.src}" alt="${LABELS_CAT[f.cat] || ''}" loading="lazy">
-        <div class="gal-item-overlay"><span class="gal-item-label">${LABELS_CAT[f.cat] || f.cat}</span></div>
-      `;
-        } else {
-          const eg = emojis[f.cat] || '🥊';
-          const gr = grads[f.cat] || 'linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 100%)';
-          item.innerHTML = `
-        <div class="gal-placeholder" style="height:100%; background:${gr}; font-size:3.5rem; display:flex; align-items:center; justify-content:center;">${eg}</div>
-        <div class="gal-item-overlay"><span class="gal-item-label">${LABELS_CAT[f.cat] || f.cat}</span></div>
-      `;
-        }
-        item.onclick = () => { lbOpenByIndex(originalIdx, indices); };
-        grid.appendChild(item);
-      });
-
-      // Generar puntos por "páginas" (grupos de fotos) para que no haya tantos
-      const dotsEl = document.getElementById('galDots');
-      const containerW = grid.parentElement.offsetWidth;
-      const visible = Math.floor((containerW + 16) / GAL_CARD_W) || 1;
-      const numPages = Math.ceil(indices.length / visible);
-
-      dotsEl.innerHTML = '';
-      if (numPages > 1) {
-        for (let i = 0; i < numPages; i++) {
-          const d = document.createElement('div');
-          d.className = 'shop-dot' + (i === 0 ? ' active' : '');
-          const targetIdx = i * visible;
-          d.onclick = () => galGoTo(Math.min(targetIdx, indices.length - visible));
-          dotsEl.appendChild(d);
-        }
-      }
-      galGoTo(0);
+      const lista = galVisibles();
+      galTrack.innerHTML = lista.map((f, i) => `
+        <div class="gal-item" onclick="lbAbrir('gal', ${i})">
+          <img src="img/thumbs/${f.src}" alt="${LABELS_CAT[f.cat]} en Villa Boxing GV" loading="lazy">
+          <div class="gal-item-overlay"><span class="gal-item-label">${LABELS_CAT[f.cat]}</span></div>
+        </div>`).join('');
+      gal.refrescar();
     }
-
-    function galGoTo(idx) {
-      const track = document.getElementById('galeriaGrid');
-      const containerW = track.parentElement.offsetWidth;
-      const visible = Math.floor((containerW + 16) / GAL_CARD_W);
-      const max = Math.max(0, track.children.length - visible);
-
-      galCurrent = Math.max(0, Math.min(idx, max));
-      const trackW = track.scrollWidth;
-      const maxScroll = Math.max(0, trackW - containerW);
-
-      let targetX = galCurrent * GAL_CARD_W;
-      if (targetX > maxScroll) targetX = maxScroll;
-
-      track.style.transform = `translateX(-${targetX}px)`;
-
-      // Resaltar el punto de la página actual
-      const activePage = Math.round(galCurrent / visible);
-      document.querySelectorAll('#galDots .shop-dot').forEach((d, i) => d.classList.toggle('active', i === activePage));
-    }
-
-    function galMove(dir) {
-      const track = document.getElementById('galeriaGrid');
-      const containerW = track.parentElement.offsetWidth;
-      const visible = Math.floor((containerW + 16) / GAL_CARD_W) || 1;
-      const max = Math.max(0, track.children.length - visible);
-
-      let next = galCurrent + dir;
-      if (next > max) next = 0;      // Vuelve al inicio
-      else if (next < 0) next = max; // Va al final
-      galGoTo(next);
-    }
-
+    function galMove(dir) { gal.mover(dir); }
     function galFiltrar(btn, cat) {
       document.querySelectorAll('.gal-filter').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       galFiltroActivo = cat;
       galRenderizar();
     }
+    galRenderizar();
 
-    // ---- LIGHTBOX ----
-    let lbIndices = []; // índices visibles actuales
-
-    function lbOpenByIndex(originalIdx, indices) {
-      lbIndices = indices;
-      lbIndex = indices.indexOf(originalIdx);
-      lbMostrar();
+    // =====================
+    // LIGHTBOX (galería y tienda)
+    // =====================
+    const lb = { modo: 'gal', idx: 0 };
+    function lbLista() {
+      return lb.modo === 'shop'
+        ? PRODUCTOS.map(p => ({ src: `img/${p.img}`, tag: `${p.nombre} — ${soles(p.precio)}`, alt: p.nombre }))
+        : galVisibles().map(f => ({ src: `img/${f.src}`, tag: LABELS_CAT[f.cat], alt: LABELS_CAT[f.cat] }));
     }
-
-    function lbOpen(visIdx) {
-      const indices = galeriaFotos.map((_, i) => i).filter(i => galFiltroActivo === 'all' || galeriaFotos[i].cat === galFiltroActivo);
-      lbIndices = indices;
-      lbIndex = visIdx;
+    function lbAbrir(modo, idx) {
+      lb.modo = modo; lb.idx = idx;
       lbMostrar();
-    }
-
-    function lbMostrar() {
-      const idx = lbIndices[lbIndex];
-      const f = galeriaFotos[idx];
-      const img = document.getElementById('lbImg');
-      if (f && f.src) {
-        img.src = f.src;
-        img.style.display = 'block';
-      } else {
-        img.src = '';
-        img.style.display = 'none';
-        // Mostrar placeholder grande
-      }
-      document.getElementById('lbCounter').textContent = `${lbIndex + 1} / ${lbIndices.length}`;
-      document.getElementById('lbTag').textContent = f ? (LABELS_CAT[f.cat] || f.cat) : '';
       document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
-
-    function lbClose() {
-      const lb = document.getElementById('lightbox');
-      lb.classList.remove('open');
-      lb.dataset.mode = '';
-      document.body.style.overflow = '';
+    function shopImgOpen(i) { lbAbrir('shop', i); }
+    function lbMostrar() {
+      const lista = lbLista(), f = lista[lb.idx];
+      const img = document.getElementById('lbImg');
+      img.src = f.src; img.alt = f.alt;
+      document.getElementById('lbCounter').textContent = `${lb.idx + 1} / ${lista.length}`;
+      document.getElementById('lbTag').textContent = f.tag;
+      // Precarga la siguiente
+      const sig = lista[(lb.idx + 1) % lista.length]; if (sig) new Image().src = sig.src;
     }
-
-    function lbBgClose(e) {
-      if (e.target === document.getElementById('lightbox')) lbClose();
-    }
-
     function lbMove(dir) {
-      lbIndex = (lbIndex + dir + lbIndices.length) % lbIndices.length;
+      const n = lbLista().length;
+      lb.idx = (lb.idx + dir + n) % n;
       lbMostrar();
     }
+    function lbClose() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function lbBgClose(e) { if (e.target.id === 'lightbox' || e.target.classList.contains('lightbox-inner')) lbClose(); }
 
-    // Teclado
+    // Swipe en el lightbox (celular)
+    (() => {
+      let x0 = 0;
+      const el = document.getElementById('lightbox');
+      el.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+      el.addEventListener('touchend', e => {
+        const d = x0 - e.changedTouches[0].clientX;
+        if (Math.abs(d) > 40) lbMove(d > 0 ? 1 : -1);
+      }, { passive: true });
+    })();
+
     document.addEventListener('keydown', e => {
-      if (!document.getElementById('lightbox').classList.contains('open')) return;
-      if (e.key === 'ArrowRight') lbMove(1);
-      if (e.key === 'ArrowLeft') lbMove(-1);
-      if (e.key === 'Escape') lbClose();
+      if (document.getElementById('lightbox').classList.contains('open')) {
+        if (e.key === 'ArrowRight') lbMove(1);
+        if (e.key === 'ArrowLeft') lbMove(-1);
+        if (e.key === 'Escape') lbClose();
+      } else if (e.key === 'Escape') cerrarLogin();
     });
 
-    // Inicializar galería
-    galRenderizar();
-
-    // Touch swipe para galería
-    const galGrid = document.getElementById('galeriaGrid');
-    galGrid.addEventListener('touchstart', e => { galStartX = e.touches[0].clientX; }, { passive: true });
-    galGrid.addEventListener('touchend', e => {
-      const diff = galStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 30) galMove(diff > 0 ? 1 : -1);
-    }, { passive: true });
+    // =====================
+    // VIDEO — playlist en bucle, sonido solo si el usuario lo pide
+    // =====================
+    const gymVideo = document.getElementById('gymVideo');
+    const gymPlaylist = ['video1.mp4', 'video2.mp4'];
+    let videoIdx = 0;
+    gymVideo.addEventListener('ended', () => {
+      videoIdx = (videoIdx + 1) % gymPlaylist.length;
+      gymVideo.src = gymPlaylist[videoIdx];
+      gymVideo.play().catch(() => { });
+    });
+    // Pausa cuando no está en pantalla (ahorra datos y batería)
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([en]) => {
+        if (en.isIntersecting) gymVideo.play().catch(() => { }); else gymVideo.pause();
+      }, { threshold: 0.25 }).observe(gymVideo);
+    }
+    function toggleSonido() {
+      gymVideo.muted = !gymVideo.muted;
+      if (!gymVideo.muted) { gymVideo.volume = 0.6; gymVideo.play().catch(() => { }); }
+      const b = document.getElementById('videoSound');
+      b.textContent = gymVideo.muted ? '🔇 Activar sonido' : '🔊 Silenciar';
+      b.setAttribute('aria-pressed', String(!gymVideo.muted));
+    }
 
     // =====================
-    // LOGIN
+    // MAPA (carga diferida)
     // =====================
+    (() => {
+      const q = encodeURIComponent(DIRECCION_MAPA);
+      document.getElementById('mapaLink').href = `https://www.google.com/maps/search/?api=1&query=${q}`;
+      const frame = document.getElementById('mapaFrame');
+      const cargar = () => { if (!frame.src) frame.src = `https://www.google.com/maps?q=${q}&output=embed`; };
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(([en]) => { if (en.isIntersecting) { cargar(); io.disconnect(); } }, { rootMargin: '300px' });
+        io.observe(frame);
+      } else cargar();
+    })();
+
+    document.getElementById('anioActual').textContent = new Date().getFullYear();
+
+    // =====================
+    // MENÚ MÓVIL
+    // =====================
+    function toggleMenu() {
+      const links = document.querySelector('.nav-links');
+      const abierto = links.classList.toggle('active');
+      document.querySelector('.nav-toggle').setAttribute('aria-expanded', String(abierto));
+    }
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('active');
+      document.querySelector('.nav-toggle').setAttribute('aria-expanded', 'false');
+    }));
+
+    // =====================
+    // LOGIN ADMIN — Supabase Auth (se carga solo cuando se abre el modal)
+    // =====================
+    let sb = null;
+    function cargarSupabase() {
+      if (sb) return Promise.resolve(sb);
+      return new Promise((ok, fail) => {
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+        s.onload = () => { sb = supabase.createClient(VB_CONFIG.SUPABASE_URL, VB_CONFIG.SUPABASE_KEY); ok(sb); };
+        s.onerror = () => fail(new Error('No se pudo cargar Supabase'));
+        document.head.appendChild(s);
+      });
+    }
+
+    async function abrirLogin() {
+      document.getElementById('loginOverlay').classList.add('open');
+      try {
+        const cli = await cargarSupabase();
+        const { data: { session } } = await cli.auth.getSession();
+        if (session) { window.location.href = 'Dashboard.html'; return; }
+      } catch (e) { console.error(e); }
+      setTimeout(() => document.getElementById('loginUser').focus(), 50);
+    }
+
     function cerrarLogin() {
       document.getElementById('loginOverlay').classList.remove('open');
       document.getElementById('loginError').classList.remove('show');
-      document.getElementById('loginUser').value = '';
       document.getElementById('loginPass').value = '';
     }
 
-    function doLogin() {
-      const user = document.getElementById('loginUser').value.trim();
-      const pass = document.getElementById('loginPass').value;
-      // Cambia estas credenciales por las que quieras
-      if (user === 'villaboxing' && pass === 'admin2026') {
+    function loginError(msg) {
+      const el = document.getElementById('loginError');
+      el.textContent = msg;
+      el.classList.add('show');
+      document.getElementById('loginPass').value = '';
+      document.getElementById('loginPass').focus();
+    }
+
+    async function doLogin() {
+      const email = document.getElementById('loginUser').value.trim();
+      const password = document.getElementById('loginPass').value;
+      if (!email || !password) return loginError('Ingresa correo y contraseña');
+      const btn = document.getElementById('loginBtn');
+      btn.disabled = true; btn.textContent = 'Verificando…';
+      try {
+        const cli = await cargarSupabase();
+        const { error } = await cli.auth.signInWithPassword({ email, password });
+        if (error) return loginError('Correo o contraseña incorrectos');
         window.location.href = 'Dashboard.html';
-      } else {
-        document.getElementById('loginError').classList.add('show');
-        document.getElementById('loginPass').value = '';
-        document.getElementById('loginPass').focus();
+      } catch (e) {
+        loginError('Sin conexión. Intenta de nuevo.');
+      } finally {
+        btn.disabled = false; btn.textContent = 'Ingresar al sistema';
       }
     }
 
-    // Cerrar con clic fuera del modal
-    document.getElementById('loginOverlay').addEventListener('click', function (e) {
-      if (e.target === this) cerrarLogin();
-    });
+    document.getElementById('loginOverlay').addEventListener('click', function (e) { if (e.target === this) cerrarLogin(); });
+    document.getElementById('loginUser').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('loginPass').focus(); });
 
-    // Toggle menú móvil
-    function toggleMenu() {
-      const links = document.querySelector('.nav-links');
-      links.classList.toggle('active');
-    }
-
-    // Cerrar menú al hacer click en un link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.querySelector('.nav-links').classList.remove('active');
-      });
-    });
-
-    // Lógica de reproducción secuencial de videos
-    const gymVideo = document.getElementById('gymVideo');
-    const gymPlaylist = ['video1.mp4', 'video2.mp4']; // Lista de tus videos
-    let currentVideoIdx = 0;
-
-    if (gymVideo) {
-      // Cuando termina un video, carga y reproduce el siguiente
-      gymVideo.addEventListener('ended', () => {
-        currentVideoIdx = (currentVideoIdx + 1) % gymPlaylist.length;
-        gymVideo.src = gymPlaylist[currentVideoIdx];
-        gymVideo.play();
-      });
-    }
-
-    // Activar audio y asegurar reproducción tras el primer clic del usuario
-    window.addEventListener('click', () => {
-      if (gymVideo) {
-        gymVideo.muted = false;
-        gymVideo.volume = 0.5; // Subimos el volumen al 50%
-        gymVideo.play().catch(err => console.log("Autoplay bloqueado:", err));
-      }
-    }, { once: true }); // Solo se ejecuta una vez al primer clic
+    // Si el Dashboard redirige con #admin, abre el login directamente
+    if (location.hash === '#admin') abrirLogin();
   </script>
 
 </body>
